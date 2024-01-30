@@ -1,45 +1,192 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  background-color: white;
+  border: 0.25rem solid black;
+  border-radius: 2rem;
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 0.5rem 2rem;
+  margin: 1rem;
+  width: 30rem;
+  height: 4rem;
+  cursor: pointer;
+}
+
+.navBarBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.headerFont {
+  font-family: Montserrat, sans-serif;
+  color: white;
+  margin: 0;
+  padding: 0;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+  height: 5rem;
+  width: 5rem;
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.logoBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  width: 220px;
+  cursor: pointer;
 }
 
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.navBar {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 80px;
+  background-color: black;
+  box-shadow: 0.5rem 0.5rem 0.5rem darkgrey;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.iconBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 225px;
+  height: 100%;
 }
 
-.card {
-  padding: 2em;
+.navIcon {
+  background-color: white;
+  border-radius: 50%;
+  padding: 0.75rem;
+  height: 3rem;
+  width: 3rem;
+  cursor: pointer;
 }
 
-.read-the-docs {
-  color: #888;
+.navIcon:hover {
+  transform: scale(1.2);
+  border: 3px solid #03432d;
+}
+
+.questions {
+  margin-top: 0.2rem;
+}
+
+.indicatorBox {
+  display: flex;
+  justify-content: center;
+  margin-top: 8rem;
+}
+
+.indicator {
+  border-radius: 50%;
+  border: 0.25rem solid black;
+  width: 50px;
+  height: 50px;
+  margin: 0.25rem;
+}
+
+.correctIndicator {
+  background-color: green;
+}
+
+.incorrectIndicator {
+  background-color: red;
+}
+
+.questionText {
+  font-family: Montserrat, sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.questionBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.correct {
+  border: 0.25rem solid green;
+}
+
+.incorrect {
+  border: 0.25rem solid red;
+}
+
+.answerButton:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: lightgray;
+}
+
+.answersBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.resultBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.resultsModal {
+  height: 500px;
+  width: 400px;
+  border: 1px solid black;
+  border-radius: 10%;
+  background-color: #faf9f6;
+  font-family: Montserrat, sans-serif;
+}
+
+.textBox {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.headerBox {
+  display: flex;
+}
+
+.headerBox > h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+.resultTextBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.resultTextBox > p {
+  margin: 0;
+  font-size: 2rem;
 }
