@@ -11,18 +11,17 @@ CREATE TABLE "public"."users" (
   "username" text,
   "email" text,
   "hashedPassword" text,
-  "createdAt" TIMESTAMPTZ(6)
+  "createdAt" TIMESTAMPTZ(6) DEFAULT NOW()
 );
 
 CREATE TABLE "public"."dailyQuizzes" (
   "dailyQuizId" serial PRIMARY KEY,
-  "dailyQuestionId" int,
   "quizName" text,
   "quizTakerId" int,
   "correctCount" int,
   "incorrectCount" int,
-  "createdAt" TIMESTAMPTZ(6),
-  unique ("dailyQuestionId")
+  "createdAt" TIMESTAMPTZ(6) DEFAULT NOW(),
+  unique("dailyQuizId")
 );
 
 CREATE TABLE "public"."dailyQuizQuestions" (
@@ -30,20 +29,17 @@ CREATE TABLE "public"."dailyQuizQuestions" (
   "dailyQuizId" int,
   "question" text,
   "difficulty" text,
-  "isMultiple" bit,
-  "isBoolean" bit,
-  "createdAt" TIMESTAMPTZ(6),
-  unique ("dailyQuizId")
+  "createdAt" TIMESTAMPTZ(6) DEFAULT NOW(),
+  unique("dailyQuestionId")
 );
 
 CREATE TABLE "public"."dailyQuizAnswers" (
   "answerId" serial PRIMARY KEY,
   "dailyQuestionId" int,
   "answer" text,
-  "isCorrect" bit,
-  "isIncorrect" bit,
-  "createdAt" TIMESTAMPTZ(6),
-  unique ("dailyQuestionId")
+  "isCorrect" boolean,
+  "createdAt" TIMESTAMPTZ(6) DEFAULT NOW(),
+  unique("answerId")
 );
 
 CREATE TABLE "public"."userQuizzes" (
@@ -54,19 +50,15 @@ CREATE TABLE "public"."userQuizzes" (
   "quizTakerId" int,
   "correctCount" int,
   "incorrectCount" int,
-  "createdAt" TIMESTAMPTZ(6),
-  unique ("userQuestionId"),
-  unique ("quizCreatorId"),
-  unique("quizTakerId")
+  "createdAt" TIMESTAMPTZ(6) DEFAULT NOW(),
+  unique ("userQuestionId")
 );
 
 CREATE TABLE "public"."userQuizQuestions" (
   "userQuestionId" serial PRIMARY KEY,
   "userQuizId" int,
   "question" text,
-  "isMultiple" bit,
-  "isBoolean" bit,
-  "createdAt" TIMESTAMPTZ(6),
+  "createdAt" TIMESTAMPTZ(6) DEFAULT NOW(),
   unique ("userQuizId")
 );
 
@@ -74,24 +66,7 @@ CREATE TABLE "public"."userQuizAnswers" (
   "answerId" serial PRIMARY KEY,
   "userQuestionId" int,
   "answer" text,
-  "isCorrect" bit,
-  "isIncorrect" bit,
-  "createdAt" TIMESTAMPTZ(6),
+  "isCorrect" text,
+  "createdAt" TIMESTAMPTZ(6) DEFAULT NOW(),
   unique ("userQuestionId")
 );
-
-ALTER TABLE "public"."dailyQuizzes" ADD FOREIGN KEY ("quizTakerId") REFERENCES "public"."users" ("userId");
-
-ALTER TABLE "public"."dailyQuizQuestions" ADD FOREIGN KEY ("dailyQuestionId") REFERENCES "public"."dailyQuizzes" ("dailyQuizId");
-
-ALTER TABLE "public"."dailyQuizQuestions" ADD FOREIGN KEY ("dailyQuestionId") REFERENCES "public"."dailyQuizzes" ("dailyQuestionId");
-
-ALTER TABLE "public"."dailyQuizQuestions" ADD FOREIGN KEY ("dailyQuizId") REFERENCES "public"."dailyQuizzes" ("dailyQuizId");
-
-ALTER TABLE "public"."dailyQuizQuestions" ADD FOREIGN KEY ("dailyQuestionId") REFERENCES "public"."dailyQuizAnswers" ("dailyQuestionId");
-
-ALTER TABLE "public"."userQuizQuestions" ADD FOREIGN KEY ("userQuestionId") REFERENCES "public"."userQuizAnswers" ("userQuestionId");
-
-ALTER TABLE "public"."userQuizQuestions" ADD FOREIGN KEY ("userQuizId") REFERENCES "public"."userQuizzes" ("userQuizId");
-
-ALTER TABLE "public"."userQuizQuestions" ADD FOREIGN KEY ("userQuestionId") REFERENCES "public"."userQuizzes" ("userQuestionId");
