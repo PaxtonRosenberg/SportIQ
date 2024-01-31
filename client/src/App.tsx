@@ -1,19 +1,19 @@
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Quiz } from './components/Quiz';
 import './App.css';
 
 export default function App() {
-  // useEffect(() => {
-  //   async function readServerData() {
-  //     const resp = await fetch('/api/dailyQuiz');
+  useEffect(() => {
+    async function readServerData() {
+      const resp = await fetch('/api/dailyQuiz');
 
-  //     const data = await resp.json();
+      const data = await resp.json();
 
-  //     console.log('Data from server:', data);
-  //   }
+      console.log('Data from server:', data);
+    }
 
-  //   readServerData();
-  // }, []);
+    readServerData();
+  }, []);
 
   return (
     <>
