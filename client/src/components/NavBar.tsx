@@ -1,4 +1,5 @@
-import logo from '/workspaces/SportIQ/server/public/stadium_clip_art.png';
+import logo from '../../../server/public/stadium_clip_art.png';
+
 import { FaPeopleGroup } from 'react-icons/fa6';
 import { MdInsertChartOutlined } from 'react-icons/md';
 import { FaRegQuestionCircle, FaUser } from 'react-icons/fa';
