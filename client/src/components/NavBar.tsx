@@ -1,8 +1,7 @@
-import logo from '/workspaces/SportIQ/client/src/assets/images/stadium_clip_art.png';
-import community from '/workspaces/SportIQ/client/src/assets/images/people-group-solid.svg';
-import stats from '/workspaces/SportIQ/client/src/assets/images/chart-line-solid.svg';
-import help from '/workspaces/SportIQ/client/src/assets/images/circle-question-regular.svg';
-import account from '/workspaces/SportIQ/client/src/assets/images/user-solid.svg';
+import logo from '/workspaces/SportIQ/client/public/stadium_clip_art.png';
+import { FaPeopleGroup } from 'react-icons/fa6';
+import { MdInsertChartOutlined } from 'react-icons/md';
+import { FaRegQuestionCircle, FaUser } from 'react-icons/fa';
 
 export default function NavBar() {
   return (
@@ -14,10 +13,18 @@ export default function NavBar() {
             <img className="logo" src={logo}></img>
           </div>
           <div className="iconBox">
-            <img className="navIcon" src={community}></img>
-            <img className="navIcon stats" src={stats}></img>
-            <img className="navIcon" src={help}></img>
-            <img className="navIcon" src={account}></img>
+            <div className="navIcon">
+              <FaPeopleGroup />
+            </div>
+            <div className="navIcon">
+              <MdInsertChartOutlined />
+            </div>
+            <div className="navIcon">
+              <FaRegQuestionCircle />
+            </div>
+            <div className="navIcon">
+              <FaUser />
+            </div>
           </div>
         </div>
       </div>

@@ -26,7 +26,13 @@ export default function Answers({
     return (
       <button
         key={index}
-        className={selected ? (answer.isCorrect ? 'correct' : 'incorrect') : ''}
+        className={
+          selected
+            ? answer.isCorrect
+              ? 'correct answerButton'
+              : 'incorrect answerButton'
+            : 'answerButton'
+        }
         onClick={() => onClick(index, currentAnswers)}>
         {answer.answer}
       </button>
