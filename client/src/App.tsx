@@ -31,15 +31,15 @@ export default function App() {
     setIsAuthorizing(false);
   }, []);
 
-  // useEffect(() => {
-  //   async function readServerData() {
-  //     const resp = await fetch('/api/dailyQuiz');
-  //     const data = await resp.json();
-  //     console.log('data from server:', data)
-  //   }
+  useEffect(() => {
+    async function readServerData() {
+      const resp = await fetch('/api/dailyQuiz');
+      const data = await resp.json();
+      console.log('data from server:', data);
+    }
 
-  //   readServerData();
-  // }, []);
+    readServerData();
+  }, []);
 
   if (isAuthorizing) return null;
 
