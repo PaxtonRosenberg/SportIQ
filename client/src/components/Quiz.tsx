@@ -1,9 +1,10 @@
-import NavBar from './NavBar';
 import Indicators from './Indicators';
 import Questions from './Questions';
 import Answers from './Answers';
-import Results from './Results';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { AppContext } from './AppContext';
+import { addDailyQuizResult } from '../data';
+import { useNavigate } from 'react-router-dom';
 
 type Question = {
   dailyQuestionId: number;
@@ -23,51 +24,81 @@ export function Quiz() {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>([]);
-  const [currentQuestion, setCurrentQuestion] = useState<number>(1);
+  const [currentQuestion, setCurrentQuestion] = useState<number>(-1);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [showResults, setShowResults] = useState<boolean>(false);
-  const [score, setScore] = useState<number>(0);
   const [currentAnswers, setCurrentAnswers] = useState<Answer[]>([]);
   const [prevAnswersResult, setPrevAnswersResult] = useState<boolean[]>([]);
+  const [dailyQuizId, setDailyQuizId] = useState<number>(
+    Math.floor(Math.random() * 10)
+  );
+  const { incrementScore, resetScore, user, score } = useContext(AppContext);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    async function getQuestions() {
+    async function fetchData() {
       try {
-        const res = await fetch('/api/dailyQuizQuestions');
-        if (!res.ok) {
-          throw new Error(`Error, failed to fetch ${res.status}`);
+        // Fetch questions
+        const questionsRes = await fetch(
+          `/api/dailyQuizQuestions/${dailyQuizId}`
+        );
+        if (!questionsRes.ok) {
+          throw new Error(
+            `Error, failed to fetch questions ${questionsRes.status}`
+          );
         }
-        const dailyQuizQuestions = await res.json();
+        const dailyQuizQuestions = await questionsRes.json();
         setQuestions(dailyQuizQuestions);
+
+        // Fetch answers
+        const answersRes = await fetch(`/api/dailyQuizAnswers/${dailyQuizId}`);
+        if (!answersRes.ok) {
+          throw new Error(
+            `Error, failed to fetch answers ${answersRes.status}`
+          );
+        }
+        const dailyQuizAnswers = await answersRes.json();
+        setAnswers(dailyQuizAnswers);
+        resetScore();
       } catch (err) {
         console.error(err);
       }
     }
-    getQuestions();
-    setShowResults(false);
-  }, []);
+
+    fetchData();
+  }, [dailyQuizId]);
 
   useEffect(() => {
-    async function getAnswers() {
-      try {
-        const res = await fetch('/api/dailyQuizAnswers');
-        if (!res.ok) {
-          throw new Error(`Error, failed to fetch ${res.status}`);
-        }
-        const dailyQuizAnswers = await res.json();
-        setAnswers(dailyQuizAnswers);
-      } catch (err) {
-        console.error(err);
-      }
+    // Update currentQuestion when questions change
+    if (questions.length > 0) {
+      setCurrentQuestion(questions[0].dailyQuestionId);
     }
-    getAnswers();
-  }, []);
+  }, [questions]);
 
-  function handleClick(answersIndex: number, currentAnswers: Answer[]) {
-    setCurrentAnswers(currentAnswers);
+  async function handleEndOfQuiz(currentIndex: number) {
+    try {
+      if (currentIndex === 4 && user) {
+        const userId = user.userId;
+        const dailyQuizId = questions[0].dailyQuizId;
+        const quizResult = { userId, dailyQuizId, score };
+
+        await addDailyQuizResult(quizResult);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async function handleClick(answersIndex: number, answers: Answer[]) {
+    if (selectedAnswer !== null) {
+      return;
+    }
+
+    setCurrentAnswers(answers);
+
     setSelectedAnswer(answersIndex);
-    if (currentAnswers[answersIndex].isCorrect) {
-      setScore(score + 1);
+    if (answers[answersIndex].isCorrect) {
+      incrementScore();
       setPrevAnswersResult([...prevAnswersResult, true]);
     } else {
       setPrevAnswersResult([...prevAnswersResult, false]);
@@ -83,16 +114,19 @@ export function Quiz() {
         setSelectedAnswer(null);
       }
       if (currentIndex === 4) {
-        setShowResults(true);
         answersIndex = 0;
+        navigate('/stats');
+      }
+      if (dailyQuizId === null) {
+        setDailyQuizId(Math.floor(Math.random() * 10));
       }
     }, 1000);
+    await handleEndOfQuiz(currentIndex);
   }
 
   return (
     <>
-      <NavBar />
-      {!showResults ? (
+      <div className="container">
         <Indicators
           questions={questions}
           currentQuestion={currentIndex}
@@ -106,15 +140,15 @@ export function Quiz() {
               : true
           }
         />
-      ) : null}
-      <Questions questions={questions} currentIndex={currentIndex} />
-      <Answers
-        answers={answers}
-        currentQuestion={currentQuestion}
-        selectedAnswer={selectedAnswer}
-        onClick={handleClick}
-      />
-      <Results results={showResults} score={score} />
+
+        <Questions questions={questions} currentIndex={currentIndex} />
+        <Answers
+          answers={answers}
+          currentQuestion={currentQuestion}
+          selectedAnswer={selectedAnswer}
+          onClick={handleClick}
+        />
+      </div>
     </>
   );
 }

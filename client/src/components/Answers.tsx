@@ -18,25 +18,28 @@ export default function Answers({
   onClick,
   selectedAnswer,
 }: AnswersProps) {
-  const currentAnswers = answers.filter(
-    (answer) => answer.dailyQuestionId === currentQuestion
-  );
-  const quizAnswers = currentAnswers.map((answer, index) => {
-    const selected = selectedAnswer === index;
-    return (
+  const quizAnswers = answers.map((answer, index) => {
+    const isSelected = selectedAnswer !== null;
+    const isIncorrect =
+      isSelected && !answer.isCorrect && selectedAnswer === index;
+    const isCorrect = answer.isCorrect;
+
+    return currentQuestion === answer.dailyQuestionId ? (
       <button
         key={index}
         className={
-          selected
-            ? answer.isCorrect
-              ? 'correct answerButton'
-              : 'incorrect answerButton'
+          isSelected
+            ? isCorrect
+              ? 'correctAnswerButton'
+              : isIncorrect
+              ? 'incorrectAnswerButton'
+              : 'postSelectionAnswerButton'
             : 'answerButton'
         }
-        onClick={() => onClick(index, currentAnswers)}>
+        onClick={() => onClick(index, answers)}>
         {answer.answer}
       </button>
-    );
+    ) : null;
   });
 
   return <div className="answersBox">{quizAnswers}</div>;
