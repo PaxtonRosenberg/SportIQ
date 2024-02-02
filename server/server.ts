@@ -2,11 +2,14 @@
 import 'dotenv/config';
 import express from 'express';
 import pg from 'pg';
+import argon2 from 'argon2';
+import jwt from 'jsonwebtoken';
 import { readFile } from 'fs/promises';
 import {
   ClientError,
   defaultMiddleware,
   errorMiddleware,
+  authMiddleware,
 } from './lib/index.js';
 
 const connectionString =
@@ -18,6 +21,9 @@ const db = new pg.Pool({
     rejectUnauthorized: false,
   },
 });
+
+const hashKey = process.env.TOKEN_SECRET;
+if (!hashKey) throw new Error('TOKEN_SECRET not found in .env');
 
 const app = express();
 
@@ -56,6 +62,20 @@ async function getData() {
   const quizQuestions = quizData.questions;
   return quizQuestions;
 }
+
+app.get('/api/users', async (req, res, next) => {
+  try {
+    const sql = `
+      select *
+        from "users"
+        order by "userId"
+    `;
+    const result = await db.query(sql);
+    res.json(result.rows);
+  } catch (err) {
+    next(err);
+  }
+});
 
 async function createDailyQuizId() {
   const createDailyQuizId = `
@@ -102,7 +122,6 @@ async function createDailyQuizAnswers(dailyQuestionId: number, answer: Answer) {
 
 app.get('/api/dailyQuiz', async (req, res, next) => {
   try {
-    console.log('received');
     const data = await getData();
     const dailyQuizId = await createDailyQuizId();
     for (const question of data) {
@@ -121,13 +140,13 @@ app.get('/api/dailyQuiz', async (req, res, next) => {
   }
 });
 
-app.get('/api/dailyQuizQuestions', async (req, res, next) => {
+app.get('/api/dailyQuizQuestions/:dailyQuizId', async (req, res, next) => {
   try {
+    const dailyQuizId = req.params.dailyQuizId;
     const sql = `
       select *
         from "dailyQuizQuestions"
-        where "dailyQuizId" = 1
-        order by "dailyQuestionId"
+        where "dailyQuizId" = ${dailyQuizId}
     `;
     const result = await db.query(sql);
     res.json(result.rows);
@@ -136,15 +155,137 @@ app.get('/api/dailyQuizQuestions', async (req, res, next) => {
   }
 });
 
-app.get('/api/dailyQuizAnswers', async (req, res, next) => {
+app.get('/api/dailyQuizAnswers/:dailyQuizId', async (req, res, next) => {
   try {
+    const dailyQuizId = req.params.dailyQuizId;
     const sql = `
       select *
         from "dailyQuizAnswers"
-        where "dailyQuestionId" in (1, 2, 3, 4, 5)
+        join "dailyQuizQuestions" using ("dailyQuestionId")
+        join "dailyQuizzes" using ("dailyQuizId")
+        where "dailyQuizId" = ${dailyQuizId}
     `;
     const result = await db.query(sql);
     res.json(result.rows);
+  } catch (err) {
+    next(err);
+  }
+});
+
+type User = {
+  userId: number;
+  username: string;
+  email: string;
+  hashedPassword: string;
+  createdAt: string;
+};
+
+type Auth = {
+  username: string;
+  email: string;
+  password: string;
+};
+
+app.post('/api/auth/sign-up', async (req, res, next) => {
+  try {
+    const { username, email, password } = req.body as Partial<Auth>;
+    if (!username || !password) {
+      throw new ClientError(
+        400,
+        'username, email and password are required fields'
+      );
+    }
+    const hashedPassword = await argon2.hash(password);
+    const sql = `
+      insert into "users" ("username", "email", "hashedPassword")
+      values ($1, $2, $3)
+      returning *
+    `;
+    const params = [username, email, hashedPassword];
+    const result = await db.query<User>(sql, params);
+    const [user] = result.rows;
+    res.status(201).json(user);
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.post('/api/auth/sign-in', async (req, res, next) => {
+  try {
+    const { email, password } = req.body as Partial<Auth>;
+    if (!email || !password) {
+      throw new ClientError(401, 'invalid login');
+    }
+    const sql = `
+    select "userId",
+           "username",
+           "email",
+           "hashedPassword",
+           "createdAt"
+      from "users"
+     where "email" = $1
+  `;
+    const params = [email];
+    const result = await db.query<User>(sql, params);
+    const [user] = result.rows;
+    if (!user) {
+      throw new ClientError(401, 'invalid login');
+    }
+    const { userId, username, hashedPassword, createdAt } = user;
+    if (!(await argon2.verify(hashedPassword, password))) {
+      throw new ClientError(401, 'invalid login');
+    }
+    const payload = { userId, username, email, hashedPassword, createdAt };
+    const token = jwt.sign(payload, hashKey);
+    res.json({ token, user: payload });
+  } catch (err) {
+    next(err);
+  }
+});
+
+type QuizResult = {
+  dailyQuizResultId: number;
+  dailyQuizId: string;
+  userId: string;
+  score: string;
+};
+
+app.post('/api/dailyQuizResults', authMiddleware, async (req, res, next) => {
+  try {
+    if (!req.user) {
+      throw new ClientError(401, 'not logged in');
+    }
+
+    const { dailyQuizId, score } = req.body as Partial<QuizResult>;
+    if (!dailyQuizId || !score) {
+      throw new ClientError(400, 'dailyQuizId and score are required fields');
+    }
+    const sql = `
+      insert into "dailyQuizResults" ("dailyQuizId", "userId", "score")
+        values ($1, $2, $3)
+        returning *;
+    `;
+    const params = [dailyQuizId, req.user?.userId, score];
+    const result = await db.query<QuizResult>(sql, params);
+    const [quizResult] = result.rows;
+    res.status(201).json(quizResult);
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.get('/api/dailyQuizResults', authMiddleware, async (req, res, next) => {
+  try {
+    if (!req.user) {
+      throw new ClientError(401, 'not logged in');
+    }
+    const sql = `
+      select * from "dailyQuizResults"
+        where "userId" = $1
+        order by "dailyQuizId";
+    `;
+    const result = await db.query<User>(sql, [req.user?.userId]);
+    res.status(201).json(result.rows);
   } catch (err) {
     next(err);
   }

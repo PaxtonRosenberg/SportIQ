@@ -1,112 +1,112 @@
 {
   "questions": [
     {
-      "question": "Which sport is played with a shuttlecock?",
-      "difficulty": "Easy",
-      "answers": [
-        {
-          "answer": "Tennis",
-          "isCorrect": false
-        },
-        {
-          "answer": "Badminton",
-          "isCorrect": true
-        },
-        {
-          "answer": "Volleyball",
-          "isCorrect": false
-        },
-        {
-          "answer": "Table Tennis",
-          "isCorrect": false
-        }
-      ]
-    },
-    {
-      "question": "Who holds the record for the most career points scored in the NBA?",
+      "question": "Who was the top scorer of the 2014 FIFA World Cup?",
       "difficulty": "Medium",
       "answers": [
         {
-          "answer": "Michael Jordan",
+          "answer": "Thomas Müller",
           "isCorrect": false
         },
         {
-          "answer": "LeBron James",
+          "answer": "Lionel Messi",
+          "isCorrect": false
+        },
+        {
+          "answer": "Neymar",
+          "isCorrect": false
+        },
+        {
+          "answer": "James Rodríguez",
           "isCorrect": true
-        },
-        {
-          "answer": "Kobe Bryant",
-          "isCorrect": false
-        },
-        {
-          "answer": "Kareem Abdul-Jabbar",
-          "isCorrect": false
         }
       ]
     },
     {
-      "question": "In which year did the first modern Olympic Games take place?",
-      "difficulty": "Hard",
-      "answers": [
-        {
-          "answer": "1886",
-          "isCorrect": false
-        },
-        {
-          "answer": "1900",
-          "isCorrect": false
-        },
-        {
-          "answer": "1896",
-          "isCorrect": true
-        },
-        {
-          "answer": "1912",
-          "isCorrect": false
-        }
-      ]
-    },
-    {
-      "question": "Which country has won the most FIFA World Cup titles?",
+      "question": "In 2016, who won the Formula 1 World Constructor's Championship for the third time in a row?",
       "difficulty": "Medium",
       "answers": [
         {
-          "answer": "Brazil",
+          "answer": "Scuderia Ferrari",
+          "isCorrect": false
+        },
+        {
+          "answer": "McLaren Honda",
+          "isCorrect": false
+        },
+        {
+          "answer": "Red Bull Racing Renault",
+          "isCorrect": false
+        },
+        {
+          "answer": "Mercedes-AMG Petronas",
           "isCorrect": true
-        },
-        {
-          "answer": "Germany",
-          "isCorrect": false
-        },
-        {
-          "answer": "Argentina",
-          "isCorrect": false
-        },
-        {
-          "answer": "Italy",
-          "isCorrect": false
         }
       ]
     },
     {
-      "question": "What is the maximum number of players a soccer team can have on the field during a match?",
+      "question": "Which player holds the NHL record of 2,857 points?",
       "difficulty": "Easy",
       "answers": [
         {
-          "answer": "9",
+          "answer": "Mario Lemieux",
           "isCorrect": false
         },
         {
-          "answer": "11",
+          "answer": "Sidney Crosby",
+          "isCorrect": false
+        },
+        {
+          "answer": "Gordie Howe",
+          "isCorrect": false
+        },
+        {
+          "answer": "Wayne Gretzky",
           "isCorrect": true
-        },
+        }
+      ]
+    },
+    {
+      "question": "Which country did Kabaddi, a contact sport involving tackling, originate from?",
+      "difficulty": "Medium",
+      "answers": [
         {
-          "answer": "7",
+          "answer": "Australia",
           "isCorrect": false
         },
         {
-          "answer": "10",
+          "answer": "Turkey",
           "isCorrect": false
+        },
+        {
+          "answer": "Cambodia",
+          "isCorrect": false
+        },
+        {
+          "answer": "India",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "question": "In baseball, how many fouls are an out?",
+      "difficulty": "Easy",
+      "answers": [
+        {
+          "answer": "5",
+          "isCorrect": false
+        },
+        {
+          "answer": "3",
+          "isCorrect": false
+        },
+        {
+          "answer": "2",
+          "isCorrect": false
+        },
+        {
+          "answer": "0",
+          "isCorrect": true
         }
       ]
     }

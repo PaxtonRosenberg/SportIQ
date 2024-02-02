@@ -5,6 +5,7 @@
 body {
   margin: 0;
   padding: 0;
+  width: auto;
 }
 
 button {
@@ -32,11 +33,14 @@ button {
   color: white;
   margin: 0;
   padding: 0;
+  font-size: 3rem;
+  text-decoration: none;
 }
 
 .logo {
   height: 5rem;
   width: 5rem;
+  margin-left: 0.5rem;
 }
 
 .logoBox {
@@ -44,7 +48,7 @@ button {
   align-items: center;
   justify-content: space-around;
   height: 100%;
-  width: 220px;
+  width: 240px;
   cursor: pointer;
 }
 
@@ -67,7 +71,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 225px;
+  width: 175px;
   height: 100%;
 }
 
@@ -83,12 +87,13 @@ button {
 
 .questions {
   margin-top: 0.2rem;
+  width: 75%;
 }
 
 .indicatorBox {
   display: flex;
   justify-content: center;
-  margin-top: 8rem;
+  margin-top: 2.5rem;
 }
 
 .indicator {
@@ -116,16 +121,52 @@ button {
 
 .questionBox {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  width: auto;
 }
 
-.correct {
+.correctAnswerButton {
   border: 0.25rem solid green;
+  background-color: rgb(34, 190, 34);
+  border-radius: 2rem;
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 0.5rem 2rem;
+  margin: 1rem;
+  width: 30rem;
+  height: 4rem;
+  cursor: not-allowed;
 }
 
-.incorrect {
+.incorrectAnswerButton {
   border: 0.25rem solid red;
+  background-color: rgb(227, 85, 85);
+  border-radius: 2rem;
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 0.5rem 2rem;
+  margin: 1rem;
+  width: 30rem;
+  height: 4rem;
+  cursor: not-allowed;
+}
+
+.postSelectionAnswerButton {
+  border: 0.25rem solid black;
+  background-color: white;
+  border-radius: 2rem;
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 0.5rem 2rem;
+  margin: 1rem;
+  width: 30rem;
+  height: 4rem;
+  cursor: not-allowed;
 }
 
 .answerButton:hover {
@@ -140,17 +181,17 @@ button {
   align-items: center;
 }
 
-.resultBox {
+.box {
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin-top: 5rem;
   width: 100%;
   height: 100vh;
 }
 
-.resultsModal {
-  height: 500px;
-  width: 400px;
+.modal {
+  height: 400px;
+  width: 525px;
   border: 1px solid black;
   border-radius: 10%;
   background-color: #faf9f6;
@@ -159,7 +200,7 @@ button {
 
 .textBox {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
   width: 100%;
@@ -168,11 +209,13 @@ button {
 
 .headerBox {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .headerBox > h1 {
-  margin: 0;
-  font-size: 2.5rem;
+  margin: 1rem;
+  font-size: 1.5rem;
 }
 
 .resultTextBox {
@@ -185,4 +228,274 @@ button {
 .resultTextBox > p {
   margin: 0;
   font-size: 2rem;
+}
+
+.submitButton {
+  color: white;
+  background-color: #001f3f;
+  border: none;
+  border-radius: 10px;
+  height: 2.2rem;
+  width: 10.1rem;
+  font-weight: 300;
+  font-size: 1rem;
+  padding: 0;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.signOutButton {
+  color: white;
+  background-color: #001f3f;
+  border: none;
+  border-radius: 10px;
+  height: 1.8rem;
+  width: 4rem;
+  font-weight: 300;
+  font-size: 0.75rem;
+  padding: 0;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.submitButton:hover,
+.signOutButton:hover {
+  box-shadow: 1px 1px 1px grey;
+}
+
+.loginFormBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.buttonBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem;
+}
+
+.loginFormInput {
+  background-color: #faf9f6;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 20rem;
+  font-family: Montserrat, sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  padding: 0.25rem 0.2rem;
+}
+
+.newUserLinkBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.textLink {
+  color: #00e;
+  text-decoration: underline;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 80%;
+  margin-left: 1.5rem;
+}
+
+.helpIcon {
+  font-size: 1rem;
+  display: flex;
+}
+
+.helpText {
+  display: flex;
+}
+
+.optionalResultsText {
+  text-align: center;
+}
+
+h4 {
+  margin-left: 0.3rem;
+}
+
+@media screen and (width <= 768px) {
+  .indicator {
+    border-radius: 50%;
+    border: 0.15rem solid black;
+    width: 25px;
+    height: 25px;
+    margin: 0.25rem;
+  }
+
+  button {
+    background-color: white;
+    border: 0.25rem solid black;
+    border-radius: 2rem;
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    padding: 0.5rem 2rem;
+    margin: 1rem;
+    width: 15rem;
+    height: 2rem;
+    cursor: pointer;
+  }
+
+  .correctAnswerButton {
+    border: 0.25rem solid green;
+    background-color: rgb(34, 190, 34);
+    border-radius: 2rem;
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    padding: 0.5rem 2rem;
+    margin: 1rem;
+    width: 15rem;
+    height: 2rem;
+    cursor: not-allowed;
+  }
+
+  .incorrectAnswerButton {
+    border: 0.25rem solid red;
+    background-color: rgb(227, 85, 85);
+    border-radius: 2rem;
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    padding: 0.5rem 2rem;
+    margin: 1rem;
+    width: 15rem;
+    height: 2rem;
+    cursor: not-allowed;
+  }
+
+  .postSelectionAnswerButton {
+    border: 0.25rem solid black;
+    background-color: white;
+    border-radius: 2rem;
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    padding: 0.5rem 2rem;
+    margin: 1rem;
+    width: 15rem;
+    height: 2rem;
+    cursor: not-allowed;
+  }
+
+  .questionText {
+    font-family: Montserrat, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .questionBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+  }
+
+  .logo {
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-left: 5px;
+    margin-top: 3px;
+  }
+
+  .headerFont {
+    font-family: Montserrat, sans-serif;
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-size: 1.75rem;
+    text-decoration: none;
+  }
+
+  .logoBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    width: 150px;
+    cursor: pointer;
+  }
+
+  .iconBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 125px;
+    height: 100%;
+  }
+
+  .navIcon {
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navBar {
+    width: 100%;
+    height: 5rem;
+  }
+
+  .navBarBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+  }
+
+  .modal {
+    height: 400px;
+    width: 525px;
+    border: 1px solid black;
+    border-radius: 10%;
+    background-color: #faf9f6;
+    font-family: Montserrat, sans-serif;
+  }
+
+  .loginFormInput {
+    background-color: #faf9f6;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 15rem;
+    font-family: Montserrat, sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    padding: 0.25rem 0.2rem;
+  }
 }

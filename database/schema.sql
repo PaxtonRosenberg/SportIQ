@@ -17,11 +17,26 @@ CREATE TABLE "public"."users" (
 CREATE TABLE "public"."dailyQuizzes" (
   "dailyQuizId" serial PRIMARY KEY,
   "quizName" text,
-  "quizTakerId" int,
-  "correctCount" int,
-  "incorrectCount" int,
   "createdAt" TIMESTAMPTZ(6) DEFAULT NOW(),
   unique("dailyQuizId")
+);
+
+CREATE TABLE "public"."dailyQuizResults" (
+  "dailyQuizResultId" serial PRIMARY KEY,
+  "dailyQuizId" int,
+  "userId" int,
+  "score" int,
+  "createdAt" TIMESTAMPTZ(6) DEFAULT NOW(),
+  unique("dailyQuizResultId")
+);
+
+CREATE TABLE "public"."userQuizResults" (
+  "userQuizResultId" serial PRIMARY KEY,
+  "userQuizId" int,
+  "userId" int,
+  "score" int,
+  "createdAt" TIMESTAMPTZ(6) DEFAULT NOW(),
+  unique("userQuizResultId")
 );
 
 CREATE TABLE "public"."dailyQuizQuestions" (
