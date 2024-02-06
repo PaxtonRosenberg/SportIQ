@@ -1,3 +1,3 @@
 export default function Community() {
-  return <div className="resultBox">Community placeholder</div>;
+  return <div className="resultBox">hi</div>;
 }
