@@ -66,14 +66,14 @@ export function Quiz() {
     }
 
     fetchData();
-  }, [dailyQuizId]);
+  }, []);
 
   useEffect(() => {
     // Update currentQuestion when questions change
     if (questions.length > 0) {
       setCurrentQuestion(questions[0].dailyQuestionId);
     }
-  }, [questions]);
+  }, []);
 
   async function handleEndOfQuiz(currentIndex: number) {
     try {
