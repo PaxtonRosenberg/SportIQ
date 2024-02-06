@@ -29,7 +29,7 @@ export function Quiz() {
   const [currentAnswers, setCurrentAnswers] = useState<Answer[]>([]);
   const [prevAnswersResult, setPrevAnswersResult] = useState<boolean[]>([]);
   const [dailyQuizId, setDailyQuizId] = useState<number>(
-    Math.floor(Math.random() * 10)
+    Math.floor(Math.random() * 9 + 1)
   );
   const { incrementScore, resetScore, user, score } = useContext(AppContext);
 
@@ -66,14 +66,14 @@ export function Quiz() {
     }
 
     fetchData();
-  }, []);
+  }, [dailyQuizId]);
 
   useEffect(() => {
     // Update currentQuestion when questions change
     if (questions.length > 0) {
       setCurrentQuestion(questions[0].dailyQuestionId);
     }
-  }, []);
+  }, [questions]);
 
   async function handleEndOfQuiz(currentIndex: number) {
     try {
@@ -93,9 +93,7 @@ export function Quiz() {
     if (selectedAnswer !== null) {
       return;
     }
-
     setCurrentAnswers(answers);
-
     setSelectedAnswer(answersIndex);
     if (answers[answersIndex].isCorrect) {
       incrementScore();
@@ -106,11 +104,8 @@ export function Quiz() {
     setTimeout(() => {
       if (currentIndex <= questions.length - 1) {
         setCurrentIndex(currentIndex + 1);
-
         setCurrentQuestion(currentQuestion + 1);
-
         answersIndex + 1;
-
         setSelectedAnswer(null);
       }
       if (currentIndex === 4) {
