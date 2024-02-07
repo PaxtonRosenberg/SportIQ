@@ -341,6 +341,120 @@
           ]
         }
       ]
+    },
+    {
+      "questions": [
+        {
+          "question": "What country hosted the 2014 Winter Olympics?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Canada",
+              "isCorrect": false
+            },
+            {
+              "answer": "United States",
+              "isCorrect": false
+            },
+            {
+              "answer": "Germany",
+              "isCorrect": false
+            },
+            {
+              "answer": "Russia",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "question": "Which Formula One driver was nicknamed 'The Professor'?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Ayrton Senna",
+              "isCorrect": false
+            },
+            {
+              "answer": "Niki Lauda",
+              "isCorrect": false
+            },
+            {
+              "answer": "Emerson Fittipaldi",
+              "isCorrect": false
+            },
+            {
+              "answer": "Alain Prost",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "question": "What year was hockey legend Wayne Gretzky born?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "1965",
+              "isCorrect": false
+            },
+            {
+              "answer": "1959",
+              "isCorrect": false
+            },
+            {
+              "answer": "1963",
+              "isCorrect": false
+            },
+            {
+              "answer": "1961",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "question": "In 2016, who won the Formula 1 World Constructor's Championship for the third time in a row?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Scuderia Ferrari",
+              "isCorrect": false
+            },
+            {
+              "answer": "McLaren Honda",
+              "isCorrect": false
+            },
+            {
+              "answer": "Red Bull Racing Renault",
+              "isCorrect": false
+            },
+            {
+              "answer": "Mercedes-AMG Petronas",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "question": "What team won the 2016 MLS Cup?",
+          "difficulty": "Easy",
+          "answers": [
+            {
+              "answer": "Colorado Rapids",
+              "isCorrect": false
+            },
+            {
+              "answer": "Toronto FC",
+              "isCorrect": false
+            },
+            {
+              "answer": "Montreal Impact",
+              "isCorrect": false
+            },
+            {
+              "answer": "Seattle Sounders",
+              "isCorrect": true
+            }
+          ]
+        }
+      ]
     }
   ]
 }
