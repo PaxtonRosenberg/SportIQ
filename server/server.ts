@@ -42,6 +42,7 @@ type Answer = {
 };
 
 type Question = {
+  questions: any;
   question: string;
   difficulty: string;
   answers: Answer[];
@@ -49,7 +50,7 @@ type Question = {
 };
 
 type Data = {
-  questions: Question[];
+  quizSets: Question[];
 };
 
 async function readData(): Promise<Data> {
@@ -59,9 +60,10 @@ async function readData(): Promise<Data> {
 
 async function getData() {
   const quizData = await readData();
-  const quizQuestions = quizData.questions;
-  return quizQuestions;
+  return quizData;
 }
+
+getData();
 
 app.get('/api/users', async (req, res, next) => {
   try {
@@ -122,15 +124,17 @@ async function createDailyQuizAnswers(dailyQuestionId: number, answer: Answer) {
 app.get('/api/dailyQuiz', async (req, res, next) => {
   try {
     const data = await getData();
-    const dailyQuizId = await createDailyQuizId();
-    for (const question of data) {
-      const dailyQuestionId = await createDailyQuizQuestions(
-        dailyQuizId,
-        question.question,
-        question.difficulty
-      );
-      for (let i = 0; i < 4; i++)
-        await createDailyQuizAnswers(dailyQuestionId, question.answers[i]);
+    for (const quizSet of data.quizSets) {
+      const dailyQuizId = await createDailyQuizId();
+      for (const question of quizSet.questions) {
+        const dailyQuestionId = await createDailyQuizQuestions(
+          dailyQuizId,
+          question.question,
+          question.difficulty
+        );
+        for (let i = 0; i < 4; i++)
+          await createDailyQuizAnswers(dailyQuestionId, question.answers[i]);
+      }
     }
     res.status(201).json({ message: 'Quiz has been added successfully! :)' });
   } catch (err) {
