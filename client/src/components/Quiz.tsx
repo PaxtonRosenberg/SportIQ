@@ -29,7 +29,7 @@ export function Quiz() {
   const [currentAnswers, setCurrentAnswers] = useState<Answer[]>([]);
   const [prevAnswersResult, setPrevAnswersResult] = useState<boolean[]>([]);
   const [dailyQuizId, setDailyQuizId] = useState<number>(
-    Math.floor(Math.random() * 9 + 1)
+    Math.floor(Math.random() * 1 + 1)
   );
   const { incrementScore, resetScore, user, score } = useContext(AppContext);
 

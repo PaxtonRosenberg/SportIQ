@@ -1,112 +1,112 @@
 {
   "questions": [
     {
-      "question": "Who was the top scorer of the 2014 FIFA World Cup?",
+      "question": "Which country has won the most FIFA World Cup titles?",
       "difficulty": "Medium",
       "answers": [
         {
-          "answer": "Thomas Müller",
+          "answer": "Brazil",
+          "isCorrect": true
+        },
+        {
+          "answer": "Germany",
           "isCorrect": false
         },
+        {
+          "answer": "Argentina",
+          "isCorrect": false
+        },
+        {
+          "answer": "Italy",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "question": "Who is the all-time top scorer in the history of the UEFA Champions League?",
+      "difficulty": "Hard",
+      "answers": [
         {
           "answer": "Lionel Messi",
           "isCorrect": false
         },
         {
-          "answer": "Neymar",
+          "answer": "Cristiano Ronaldo",
+          "isCorrect": true
+        },
+        {
+          "answer": "Raul",
           "isCorrect": false
         },
         {
-          "answer": "James Rodríguez",
-          "isCorrect": true
+          "answer": "Robert Lewandowski",
+          "isCorrect": false
         }
       ]
     },
     {
-      "question": "In 2016, who won the Formula 1 World Constructor's Championship for the third time in a row?",
-      "difficulty": "Medium",
-      "answers": [
-        {
-          "answer": "Scuderia Ferrari",
-          "isCorrect": false
-        },
-        {
-          "answer": "McLaren Honda",
-          "isCorrect": false
-        },
-        {
-          "answer": "Red Bull Racing Renault",
-          "isCorrect": false
-        },
-        {
-          "answer": "Mercedes-AMG Petronas",
-          "isCorrect": true
-        }
-      ]
-    },
-    {
-      "question": "Which player holds the NHL record of 2,857 points?",
+      "question": "Which soccer player is known as 'The Egyptian King'?",
       "difficulty": "Easy",
       "answers": [
         {
-          "answer": "Mario Lemieux",
+          "answer": "Sadio Mane",
           "isCorrect": false
         },
         {
-          "answer": "Sidney Crosby",
-          "isCorrect": false
-        },
-        {
-          "answer": "Gordie Howe",
-          "isCorrect": false
-        },
-        {
-          "answer": "Wayne Gretzky",
+          "answer": "Mohamed Salah",
           "isCorrect": true
+        },
+        {
+          "answer": "Pierre-Emerick Aubameyang",
+          "isCorrect": false
+        },
+        {
+          "answer": "Riyad Mahrez",
+          "isCorrect": false
         }
       ]
     },
     {
-      "question": "Which country did Kabaddi, a contact sport involving tackling, originate from?",
+      "question": "In which year did England win their first and only FIFA World Cup?",
       "difficulty": "Medium",
       "answers": [
         {
-          "answer": "Australia",
+          "answer": "1962",
           "isCorrect": false
         },
         {
-          "answer": "Turkey",
-          "isCorrect": false
-        },
-        {
-          "answer": "Cambodia",
-          "isCorrect": false
-        },
-        {
-          "answer": "India",
+          "answer": "1966",
           "isCorrect": true
+        },
+        {
+          "answer": "1970",
+          "isCorrect": false
+        },
+        {
+          "answer": "1982",
+          "isCorrect": false
         }
       ]
     },
     {
-      "question": "In baseball, how many fouls are an out?",
-      "difficulty": "Easy",
+      "question": "Who is the coach of FC Barcelona as of 2024?",
+      "difficulty": "Medium",
       "answers": [
         {
-          "answer": "5",
+          "answer": "Pep Guardiola",
           "isCorrect": false
         },
         {
-          "answer": "3",
+          "answer": "Jurgen Klopp",
           "isCorrect": false
         },
         {
-          "answer": "2",
-          "isCorrect": false
-        },
-        {
-          "answer": "0",
+          "answer": "Ronald Koeman",
           "isCorrect": true
+        },
+        {
+          "answer": "Zinedine Zidane",
+          "isCorrect": false
         }
       ]
     }
