@@ -79,9 +79,8 @@ app.get('/api/users', async (req, res, next) => {
 
 async function createDailyQuizId() {
   const createDailyQuizId = `
-  insert into "dailyQuizzes" ("quizName")
-  values ('test')
-  returning "dailyQuizId"
+  insert into "dailyQuizzes" default values
+  returning "dailyQuizId";
   `;
   const params: [] = [];
   const quizData = await db.query(createDailyQuizId, params);
