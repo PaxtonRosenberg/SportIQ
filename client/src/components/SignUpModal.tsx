@@ -43,20 +43,16 @@ export default function SignUpModal() {
                   type="text"
                   name="username"
                   placeholder="username"></input>
-              </div>
-              <div className="loginFormBox">
                 <input
                   className="loginFormInput"
                   type="text"
                   name="email"
                   placeholder="email"></input>
-                <div className="loginFormBox">
-                  <input
-                    className="loginFormInput"
-                    type="password"
-                    name="password"
-                    placeholder="password"></input>
-                </div>
+                <input
+                  className="loginFormInput"
+                  type="password"
+                  name="password"
+                  placeholder="password"></input>
               </div>
               <div className="buttonBox">
                 <button className="submitButton">Submit</button>

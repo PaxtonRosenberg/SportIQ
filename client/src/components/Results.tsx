@@ -43,7 +43,7 @@ export default function Results() {
           </div>
           <div className="resultTextBox">
             <p>{score}/5</p>
-            <p>Result</p>
+            <p>Current Result</p>
           </div>
           <div className="resultTextBox">
             <p>{avgScore}/5</p>
