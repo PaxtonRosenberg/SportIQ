@@ -16,7 +16,6 @@ CREATE TABLE "public"."users" (
 
 CREATE TABLE "public"."dailyQuizzes" (
   "dailyQuizId" serial PRIMARY KEY,
-  "quizName" text,
   "createdAt" TIMESTAMPTZ(6) DEFAULT NOW(),
   unique("dailyQuizId")
 );
