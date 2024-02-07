@@ -30,21 +30,36 @@ export default function LoggedInModal() {
     <div className="box">
       <div className="modal">
         <div className="textBox">
-          <h3> {user && user.username}</h3>
-          <h5>
-            <GiLaurelsTrophy /> {month} {day}, {year}
-          </h5>
-          <Link to="/login">
-            <button className="signOutButton" onClick={handleSignOut}>
-              Sign Out
-            </button>
-          </Link>
-          <p>
-            <Link to="/">Home</Link>
-          </p>
-          <p>
-            Check out community quizzes <Link to="/community">Here</Link>
-          </p>
+          <div className="userInfoBox">
+            <h1> {user && user.username}</h1>
+            <p className="memberSinceText">
+              <GiLaurelsTrophy /> {month} {day}, {year}
+            </p>
+            <Link to="/login">
+              <button className="signOutButton" onClick={handleSignOut}>
+                Sign Out
+              </button>
+            </Link>
+          </div>
+          <div className="accountDetails">
+            <h3>Details</h3>
+            <div className="accountDetailBox">
+              <p>Email</p>
+              <p className="bottomBorder">{user?.email}</p>
+            </div>
+            <div className="accountDetailBox">
+              <p>Username</p>
+              <p className="bottomBorder">{user?.username}</p>
+            </div>
+          </div>
+          <div className="loggedInLinks">
+            <p>
+              <Link to="/">Back to Quiz</Link>
+            </p>
+            <p>
+              Check out community quizzes <Link to="/community">Here</Link>
+            </p>
+          </div>
         </div>
       </div>
       <Outlet />

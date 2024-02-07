@@ -9,6 +9,7 @@ import LoggedInModal from './components/LoggedInModal';
 import Help from './components/Help';
 import Community from './components/Community';
 import Results from './components/Results';
+import CreatedQuizForm from './components/CreatedQuizForm';
 import { User, Auth } from './lib/api';
 import './App.css';
 
@@ -31,15 +32,15 @@ export default function App() {
     setIsAuthorizing(false);
   }, []);
 
-  useEffect(() => {
-    async function readServerData() {
-      const resp = await fetch('/api/dailyQuiz');
-      const data = await resp.json();
-      console.log('data from server:', data);
-    }
+  // useEffect(() => {
+  //   async function readServerData() {
+  //     const resp = await fetch('/api/dailyQuiz');
+  //     const data = await resp.json();
+  //     console.log('data from server:', data);
+  //   }
 
-    readServerData();
-  }, []);
+  //   readServerData();
+  // }, []);
 
   if (isAuthorizing) return null;
 
@@ -88,6 +89,7 @@ export default function App() {
             <Route path="/stats" element={<Results />}></Route>
             <Route path="/help" element={<Help />}></Route>
             <Route path="/community" element={<Community />}></Route>
+            <Route path="/create" element={<CreatedQuizForm />}></Route>
           </Route>
         </Routes>
       </AppContext.Provider>

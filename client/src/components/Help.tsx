@@ -1,6 +1,7 @@
 import { FaCheckCircle } from 'react-icons/fa';
 import { BsGraphUp } from 'react-icons/bs';
 import { IoIosCreate } from 'react-icons/io';
+import { MdLiveHelp } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 
 export default function Help() {
@@ -10,10 +11,13 @@ export default function Help() {
       <div className="modal">
         <div className="textBox">
           <div className="topRow">
-            <h2>How to Play</h2>
+            <h1>How to Play</h1>
+            <div className="helpHeaderIcon">
+              <MdLiveHelp />
+            </div>
           </div>
           <div className="row">
-            <div className="helpIcon">
+            <div className="helpIcon" style={{ color: 'green' }}>
               <FaCheckCircle />
             </div>
             <div className="helpText">
@@ -21,7 +25,7 @@ export default function Help() {
             </div>
           </div>
           <div className="row">
-            <div className="helpIcon">
+            <div className="helpIcon" style={{ color: 'blue' }}>
               <BsGraphUp />
             </div>
             <div className="helpText">
@@ -29,7 +33,7 @@ export default function Help() {
             </div>
           </div>
           <div className="row">
-            <div className="helpIcon">
+            <div className="helpIcon" style={{ color: 'orange' }}>
               <IoIosCreate />
             </div>
             <div className="helpText">

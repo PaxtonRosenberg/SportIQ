@@ -22,6 +22,11 @@ button {
   cursor: pointer;
 }
 
+select {
+  font-family: Montserrat, sans-serif;
+  margin-left: 1rem;
+}
+
 .navBarBox {
   display: flex;
   align-items: center;
@@ -200,17 +205,50 @@ button {
 
 .textBox {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-direction: column;
   align-items: center;
   width: 100%;
   height: 100%;
 }
 
+.userInfoBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 90%;
+  margin: 0;
+  padding: 0;
+}
+
+.memberSinceText {
+  color: goldenrod;
+  font-size: 1rem;
+}
+
+.loggedInLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.accountDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  width: 80%;
+}
+
+.bottomBorder {
+  border-bottom: 2px solid black;
+}
+
 .headerBox {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 2rem;
 }
 
 .headerBox > h1 {
@@ -228,7 +266,7 @@ button {
 
 .resultTextBox > p {
   margin: 0;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .submitButton {
@@ -290,6 +328,7 @@ button {
   font-size: 1rem;
   font-weight: 300;
   padding: 0.25rem 0.2rem;
+  margin: 0.75rem;
 }
 
 .newUserLinkBox {
@@ -319,17 +358,21 @@ button {
   display: flex;
   align-items: center;
   justify-content: left;
-  width: 80%;
-  margin-left: 1.5rem;
+  width: 75%;
+}
+
+.helpHeaderIcon {
+  font-size: 2.5rem;
+  margin-top: 0.75rem;
+  margin-left: 0.5rem;
 }
 
 .helpIcon {
-  font-size: 1rem;
-  display: flex;
+  font-size: 2rem;
 }
 
 .helpText {
-  display: flex;
+  font-size: 1.3rem;
 }
 
 .optionalResultsText {
@@ -340,12 +383,59 @@ h4 {
   margin-left: 0.3rem;
 }
 
-@media screen and (width <= 768px) {
+.formBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: auto;
+  padding: 0 5rem 5rem;
+}
+
+.createdQuizInputBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.createdQuizAnswerBox {
+  display: flex;
+  align-items: center;
+  width: 40rem;
+  font-family: Montserrat, sans-serif;
+}
+
+.createdQuizFormInput {
+  background-color: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 40rem;
+  font-family: Montserrat, sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  padding: 0.25rem 0.2rem;
+  height: 2.5rem;
+}
+
+.communityHeaderBox {
+  font-family: Montserrat, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 3rem;
+  width: 100vw;
+}
+
+@media screen and (width <=768px) {
   .indicator {
     border-radius: 50%;
     border: 0.15rem solid black;
-    width: 25px;
-    height: 25px;
+    width: 36px;
+    height: 36px;
     margin: 0.25rem;
   }
 
@@ -355,11 +445,11 @@ h4 {
     border-radius: 2rem;
     font-family: Montserrat, sans-serif;
     font-weight: 700;
-    font-size: 0.65rem;
+    font-size: 0.95rem;
     padding: 0.5rem 2rem;
     margin: 1rem;
-    width: 15rem;
-    height: 2rem;
+    width: 20rem;
+    height: 2.5rem;
     cursor: pointer;
   }
 
@@ -369,11 +459,11 @@ h4 {
     border-radius: 2rem;
     font-family: Montserrat, sans-serif;
     font-weight: 700;
-    font-size: 0.65rem;
+    font-size: 0.95rem;
     padding: 0.5rem 2rem;
     margin: 1rem;
-    width: 15rem;
-    height: 2rem;
+    width: 20rem;
+    height: 2.5rem;
     cursor: not-allowed;
   }
 
@@ -383,11 +473,11 @@ h4 {
     border-radius: 2rem;
     font-family: Montserrat, sans-serif;
     font-weight: 700;
-    font-size: 0.65rem;
+    font-size: 0.95rem;
     padding: 0.5rem 2rem;
     margin: 1rem;
-    width: 15rem;
-    height: 2rem;
+    width: 20rem;
+    height: 2.5rem;
     cursor: not-allowed;
   }
 
@@ -397,17 +487,17 @@ h4 {
     border-radius: 2rem;
     font-family: Montserrat, sans-serif;
     font-weight: 700;
-    font-size: 0.65rem;
+    font-size: 0.95rem;
     padding: 0.5rem 2rem;
     margin: 1rem;
-    width: 15rem;
-    height: 2rem;
+    width: 20rem;
+    height: 2.5rem;
     cursor: not-allowed;
   }
 
   .questionText {
     font-family: Montserrat, sans-serif;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 700;
     text-align: center;
   }
@@ -417,7 +507,7 @@ h4 {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 350px;
+    width: 500px;
   }
 
   .logo {
@@ -480,12 +570,24 @@ h4 {
   }
 
   .modal {
-    height: 400px;
-    width: 525px;
+    height: 250px;
+    width: 300px;
     border: 1px solid black;
     border-radius: 10%;
     background-color: #faf9f6;
     font-family: Montserrat, sans-serif;
+  }
+
+  .headerBox > h1 {
+    font-size: 1.2rem;
+  }
+
+  .resultTextBox > p {
+    font-size: 1rem;
+  }
+
+  .textLink {
+    font-size: 0.75rem;
   }
 
   .loginFormInput {
@@ -498,5 +600,56 @@ h4 {
     font-size: 1rem;
     font-weight: 300;
     padding: 0.25rem 0.2rem;
+  }
+
+  .topRow > h1 {
+    font-size: 1.2rem;
+  }
+
+  .helpHeaderIcon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    margin-left: 0.25rem;
+  }
+
+  .helpIcon {
+    font-size: 1.5rem;
+  }
+
+  .helpText {
+    font-size: 0.9rem;
+  }
+
+  .userInfoBox {
+    margin-top: 1rem;
+  }
+
+  .userInfoBox > h1 {
+    font-size: 0.9rem;
+  }
+
+  .accountDetails > h3 {
+    font-size: 0.85rem;
+  }
+
+  .memberSinceText {
+    font-size: 0.65rem;
+  }
+
+  .accountDetailBox > p {
+    font-size: 0.65rem;
+  }
+
+  .loggedInLinks {
+    font-size: 0.6rem;
+  }
+
+  .newUserLinkBox > p {
+    font-size: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .headerBox {
+    margin: 0;
   }
 }
