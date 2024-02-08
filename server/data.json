@@ -139,23 +139,23 @@
           ]
         },
         {
-          "question": "In 2016, who won the Formula 1 World Constructor's Championship for the third time in a row?",
+          "question": "Which NBA team drafted Dirk Nowitzki in the 1998 NBA Draft before trading him to the Dallas Mavericks?",
           "difficulty": "Medium",
           "answers": [
             {
-              "answer": "Scuderia Ferrari",
+              "answer": "Los Angeles Lakers",
               "isCorrect": false
             },
             {
-              "answer": "McLaren Honda",
+              "answer": "Boston Celtics",
               "isCorrect": false
             },
             {
-              "answer": "Red Bull Racing Renault",
+              "answer": "Milwaukee Bucks",
               "isCorrect": false
             },
             {
-              "answer": "Mercedes-AMG Petronas",
+              "answer": "Milwaukee Bucks",
               "isCorrect": true
             }
           ]

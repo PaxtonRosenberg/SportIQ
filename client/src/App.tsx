@@ -36,7 +36,7 @@ export default function App() {
     async function readServerData() {
       const resp = await fetch('/api/dailyQuiz');
       const data = await resp.json();
-      console.log('data from server:', data);
+      return data;
     }
 
     readServerData();
