@@ -29,7 +29,7 @@ export function Quiz() {
   const [currentAnswers, setCurrentAnswers] = useState<Answer[]>([]);
   const [prevAnswersResult, setPrevAnswersResult] = useState<boolean[]>([]);
   const [dailyQuizId, setDailyQuizId] = useState<number>(
-    Math.floor(Math.random() * 3 + 1)
+    Math.floor(Math.random() * 4 + 1)
   );
   const { incrementScore, resetScore, user, score } = useContext(AppContext);
 
@@ -66,7 +66,7 @@ export function Quiz() {
     }
 
     fetchData();
-  }, [dailyQuizId]);
+  }, []);
 
   useEffect(() => {
     // Update currentQuestion when questions change
