@@ -16,3 +16,11 @@ export type QuizResult = {
   userId: number;
   score: number;
 };
+
+export type UserQuiz = {
+  userQuizId: number;
+  quizName: string;
+  imgUrl: string;
+  userId: number;
+  createdAt: Date;
+};

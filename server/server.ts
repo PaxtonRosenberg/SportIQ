@@ -63,8 +63,6 @@ async function getData() {
   return quizData;
 }
 
-getData();
-
 app.get('/api/users', async (req, res, next) => {
   try {
     const sql = `
@@ -288,6 +286,102 @@ app.get('/api/dailyQuizResults', authMiddleware, async (req, res, next) => {
         order by "dailyQuizId";
     `;
     const result = await db.query<User>(sql, [req.user?.userId]);
+    res.status(201).json(result.rows);
+  } catch (err) {
+    next(err);
+  }
+});
+
+async function createUserQuizId(
+  quizName: string,
+  quizImg: string,
+  userId: number
+) {
+  const createUserQuizId = `
+      insert into "userQuizzes" ("quizName", "imgUrl", "userId")
+      values($1, $2, $3)
+      returning *
+    `;
+  const params = [quizName, quizImg, userId];
+  const quizData = await db.query(createUserQuizId, params);
+  const quiz = quizData.rows[0];
+  const userQuizId = quiz.userQuizId;
+  return userQuizId;
+}
+
+async function createUserQuizQuestions(userQuizId: number, question: string) {
+  const sql = `
+      insert into "userQuizQuestions" ("userQuizId", "question")
+      values ($1, $2)
+      returning *
+      `;
+  const params = [userQuizId, question];
+  const result = await db.query(sql, params);
+  const newQuestion = result.rows[0];
+  const userQuestionId = newQuestion.userQuestionId;
+  return userQuestionId;
+}
+
+async function createUserQuizAnswers(userQuestionId: number, answers: Answer) {
+  const sql = `
+  insert into "userQuizAnswers" ("userQuestionId", "answer", "isCorrect")
+  values ($1, $2, $3)
+  returning *
+  `;
+
+  const params = [userQuestionId, answers.answer, answers.isCorrect];
+  const result = await db.query(sql, params);
+  const newAnswer = result.rows[0];
+  return newAnswer;
+}
+
+app.post('/api/auth/userQuizzes', authMiddleware, async (req, res, next) => {
+  try {
+    const { quizName, quizImg, questions } = req.body;
+    const userId = req.user?.userId;
+    if (userId !== undefined) {
+      const userQuizId = await createUserQuizId(quizName, quizImg, userId);
+      for (const question of questions) {
+        const userQuestionId = await createUserQuizQuestions(
+          userQuizId,
+          question.question
+        );
+
+        for (const answer of question.answers) {
+          await createUserQuizAnswers(userQuestionId, answer);
+        }
+      }
+    }
+    res.status(201).json('user quiz added');
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.get('/api/userQuizzes', authMiddleware, async (req, res, next) => {
+  try {
+    if (!req.user) {
+      throw new ClientError(401, 'not logged in');
+    }
+    const sql = `
+      select * from "userQuizzes"
+        where "userId" = $1
+        order by "createdAt";
+    `;
+    const result = await db.query<User>(sql, [req.user?.userId]);
+    res.status(201).json(result.rows);
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.get('/api/allUserQuizzes', async (req, res, next) => {
+  try {
+    const sql = `
+      select * from "userQuizzes"
+        order by "createdAt";
+    `;
+    const result = await db.query(sql);
     res.status(201).json(result.rows);
   } catch (err) {
     next(err);
