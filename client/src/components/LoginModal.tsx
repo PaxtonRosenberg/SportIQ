@@ -32,7 +32,6 @@ export default function LoginModal() {
       localStorage.setItem('token', token);
       handleSignIn({ user, token });
       onSignIn();
-      console.log(user);
     } catch (err) {
       alert(`Error signing in: ${err}`);
     }

@@ -46,11 +46,11 @@ export default function Results() {
             <p>Current Result</p>
           </div>
           <div className="resultTextBox">
-            <p>{avgScore}/5</p>
+            <p>{!isSignedIn ? `${score}/5` : `${avgScore}/5`}</p>
             <p>Average Result</p>
           </div>
           <div className="resultTextBox">
-            <p>{quizResults.length}</p>
+            <p>{!isSignedIn ? 1 : quizResults.length}</p>
             <p>Quizzes Taken</p>
           </div>
         </div>
@@ -67,7 +67,7 @@ export default function Results() {
             <span className="textLink" onClick={() => navigate('/signup')}>
               create an account
             </span>{' '}
-            to track your results
+            to track your results.
           </p>
         ) : null}
       </div>

@@ -10,6 +10,7 @@ import Help from './components/Help';
 import Community from './components/Community';
 import Results from './components/Results';
 import CreatedQuizForm from './components/CreatedQuizForm';
+import MyQuizzes from './components/MyQuizzes';
 import { User, Auth } from './lib/api';
 import './App.css';
 
@@ -90,6 +91,7 @@ export default function App() {
             <Route path="/help" element={<Help />}></Route>
             <Route path="/community" element={<Community />}></Route>
             <Route path="/create" element={<CreatedQuizForm />}></Route>
+            <Route path="/myquizzes" element={<MyQuizzes />}></Route>
           </Route>
         </Routes>
       </AppContext.Provider>

@@ -29,7 +29,7 @@ export default function LoggedInModal() {
   return (
     <div className="box">
       <div className="modal">
-        <div className="textBox">
+        <div className="accountInfoBox">
           <div className="userInfoBox">
             <h1> {user && user.username}</h1>
             <p className="memberSinceText">

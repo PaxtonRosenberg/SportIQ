@@ -58,14 +58,11 @@ CREATE TABLE "public"."dailyQuizAnswers" (
 
 CREATE TABLE "public"."userQuizzes" (
   "userQuizId" serial PRIMARY KEY,
-  "userQuestionId" int,
   "quizName" text,
-  "quizCreatorId" int,
-  "quizTakerId" int,
-  "correctCount" int,
-  "incorrectCount" int,
+  "imgUrl" text,
+  "userId" int,
   "createdAt" TIMESTAMPTZ(6) DEFAULT NOW(),
-  unique ("userQuestionId")
+  unique ("userQuizId")
 );
 
 CREATE TABLE "public"."userQuizQuestions" (
@@ -73,14 +70,14 @@ CREATE TABLE "public"."userQuizQuestions" (
   "userQuizId" int,
   "question" text,
   "createdAt" TIMESTAMPTZ(6) DEFAULT NOW(),
-  unique ("userQuizId")
+  unique ("userQuestionId")
 );
 
 CREATE TABLE "public"."userQuizAnswers" (
-  "answerId" serial PRIMARY KEY,
+  "userAnswerId" serial PRIMARY KEY,
   "userQuestionId" int,
   "answer" text,
   "isCorrect" text,
   "createdAt" TIMESTAMPTZ(6) DEFAULT NOW(),
-  unique ("userQuestionId")
+  unique ("userAnswerId")
 );
