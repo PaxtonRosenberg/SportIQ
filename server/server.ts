@@ -251,6 +251,13 @@ type QuizResult = {
   score: string;
 };
 
+type UserQuizResult = {
+  userQuizResultId: number;
+  userQuizId: string;
+  userId: string;
+  score: string;
+};
+
 app.post('/api/dailyQuizResults', authMiddleware, async (req, res, next) => {
   try {
     if (!req.user) {
@@ -275,6 +282,30 @@ app.post('/api/dailyQuizResults', authMiddleware, async (req, res, next) => {
   }
 });
 
+app.post('/api/userQuizResults', authMiddleware, async (req, res, next) => {
+  try {
+    if (!req.user) {
+      throw new ClientError(401, 'not logged in');
+    }
+
+    const { userQuizId, score } = req.body as Partial<UserQuizResult>;
+    if (!userQuizId || !score) {
+      throw new ClientError(400, 'dailyQuizId and score are required fields');
+    }
+    const sql = `
+      insert into "userQuizResults" ("userQuizId", "userId", "score")
+        values ($1, $2, $3)
+        returning *;
+    `;
+    const params = [userQuizId, req.user?.userId, score];
+    const result = await db.query<UserQuizResult>(sql, params);
+    const [quizResult] = result.rows;
+    res.status(201).json(quizResult);
+  } catch (err) {
+    next(err);
+  }
+});
+
 app.get('/api/dailyQuizResults', authMiddleware, async (req, res, next) => {
   try {
     if (!req.user) {
@@ -284,6 +315,23 @@ app.get('/api/dailyQuizResults', authMiddleware, async (req, res, next) => {
       select * from "dailyQuizResults"
         where "userId" = $1
         order by "dailyQuizId";
+    `;
+    const result = await db.query<User>(sql, [req.user?.userId]);
+    res.status(201).json(result.rows);
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.get('/api/userQuizResults', authMiddleware, async (req, res, next) => {
+  try {
+    if (!req.user) {
+      throw new ClientError(401, 'not logged in');
+    }
+    const sql = `
+      select * from "userQuizResults"
+        where "userId" = $1
+        order by "userQuizId";
     `;
     const result = await db.query<User>(sql, [req.user?.userId]);
     res.status(201).json(result.rows);
@@ -383,6 +431,38 @@ app.get('/api/allUserQuizzes', async (req, res, next) => {
     `;
     const result = await db.query(sql);
     res.status(201).json(result.rows);
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.get('/api/userQuizQuestions/:userQuizId', async (req, res, next) => {
+  try {
+    const userQuizId = req.params.userQuizId;
+    const sql = `
+      select *
+        from "userQuizQuestions"
+        where "userQuizId" = ${userQuizId}
+    `;
+    const result = await db.query(sql);
+    res.json(result.rows);
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.get('/api/userQuizAnswers/:userQuizId', async (req, res, next) => {
+  try {
+    const userQuizId = req.params.userQuizId;
+    const sql = `
+      select *
+        from "userQuizAnswers"
+        join "userQuizQuestions" using ("userQuestionId")
+        join "userQuizzes" using ("userQuizId")
+        where "userQuizId" = ${userQuizId}
+    `;
+    const result = await db.query(sql);
+    res.json(result.rows);
   } catch (err) {
     next(err);
   }

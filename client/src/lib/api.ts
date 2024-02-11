@@ -13,6 +13,7 @@ export type Auth = {
 
 export type QuizResult = {
   dailyQuizId: number;
+  userQuizId: number;
   userId: number;
   score: number;
 };
@@ -22,5 +23,28 @@ export type UserQuiz = {
   quizName: string;
   imgUrl: string;
   userId: number;
+  answer: string;
+  isCorrect: boolean;
+  question: string;
+  useranswerId: number;
+  userQuestionId: number;
   createdAt: Date;
+};
+
+export type Question = {
+  dailyQuestionId: number;
+  dailyQuizId: number;
+  difficulty: string;
+  question: string;
+  userQuestionId: number;
+  userQuizId: number;
+};
+
+export type Answer = {
+  dailyQuestionId: number;
+  dailyAnswerId: number;
+  userQuestionId: number;
+  userAnswerId: number;
+  isCorrect: boolean;
+  answer: string;
 };

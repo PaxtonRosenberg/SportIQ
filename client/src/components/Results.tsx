@@ -4,12 +4,13 @@ import { useContext, useEffect, useState } from 'react';
 import { QuizResult } from '../lib/api';
 
 export default function Results() {
-  const [quizResults, setQuizResults] = useState<QuizResult[]>([]);
+  const [dailyQuizResults, setDailyQuizResults] = useState<QuizResult[]>([]);
+  const [userQuizResults, setUserQuizResults] = useState<QuizResult[]>([]);
   const { score, isSignedIn } = useContext(AppContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    async function getQuizResults(): Promise<void> {
+    async function getDailyQuizResults(): Promise<void> {
       const req = {
         method: 'GET',
         headers: {
@@ -18,19 +19,41 @@ export default function Results() {
       };
       const res = await fetch('/api/dailyQuizResults', req);
       const results = await res.json();
-      setQuizResults(results);
+      setDailyQuizResults(results);
       if (!res.ok) throw new Error(`fetch Error ${res.status}`);
     }
-    getQuizResults();
+    getDailyQuizResults();
+  }, []);
+
+  useEffect(() => {
+    async function getUserQuizResults(): Promise<void> {
+      const req = {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      };
+      const res = await fetch('/api/userQuizResults', req);
+      const results = await res.json();
+      setUserQuizResults(results);
+      if (!res.ok) throw new Error(`fetch Error ${res.status}`);
+    }
+    getUserQuizResults();
   }, []);
 
   let avgScore = 0;
 
-  for (let i = 0; i < quizResults.length - 1; i++) {
-    avgScore += quizResults[i].score;
+  for (let i = 0; i < dailyQuizResults.length; i++) {
+    avgScore += dailyQuizResults[i].score;
   }
 
-  avgScore = avgScore / quizResults.length;
+  for (let i = 0; i < userQuizResults.length; i++) {
+    avgScore += userQuizResults[i].score;
+  }
+
+  const quizzesTaken = dailyQuizResults.length + userQuizResults.length;
+
+  avgScore = avgScore / quizzesTaken;
 
   avgScore = Number(avgScore.toFixed(2));
 
@@ -50,7 +73,7 @@ export default function Results() {
             <p>Average Result</p>
           </div>
           <div className="resultTextBox">
-            <p>{!isSignedIn ? 1 : quizResults.length}</p>
+            <p>{!isSignedIn ? 1 : quizzesTaken}</p>
             <p>Quizzes Taken</p>
           </div>
         </div>

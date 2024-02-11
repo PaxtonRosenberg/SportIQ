@@ -1,13 +1,15 @@
+import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState, useContext } from 'react';
+import { AppContext } from './AppContext';
+import { addUserQuizResult } from '../data';
 import Indicators from './Indicators';
 import Questions from './Questions';
 import Answers from './Answers';
-import { useState, useEffect, useContext } from 'react';
-import { AppContext } from './AppContext';
-import { addDailyQuizResult } from '../data';
-import { useNavigate } from 'react-router-dom';
 import { Question, Answer } from '../lib/api';
 
-export function Quiz() {
+export default function CommunityQuiz() {
+  const { userQuizId } = useParams();
+
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>([]);
@@ -15,9 +17,7 @@ export function Quiz() {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [currentAnswers, setCurrentAnswers] = useState<Answer[]>([]);
   const [prevAnswersResult, setPrevAnswersResult] = useState<boolean[]>([]);
-  const [dailyQuizId, setDailyQuizId] = useState<number>(
-    Math.floor(Math.random() * 4 + 1)
-  );
+
   const { incrementScore, resetScore, user, score } = useContext(AppContext);
 
   const navigate = useNavigate();
@@ -27,25 +27,25 @@ export function Quiz() {
       try {
         // Fetch questions
         const questionsRes = await fetch(
-          `/api/dailyQuizQuestions/${dailyQuizId}`
+          `/api/userQuizQuestions/${userQuizId}`
         );
         if (!questionsRes.ok) {
           throw new Error(
             `Error, failed to fetch questions ${questionsRes.status}`
           );
         }
-        const dailyQuizQuestions = await questionsRes.json();
-        setQuestions(dailyQuizQuestions);
+        const userQuizQuestions = await questionsRes.json();
+        setQuestions(userQuizQuestions);
 
         // Fetch answers
-        const answersRes = await fetch(`/api/dailyQuizAnswers/${dailyQuizId}`);
+        const answersRes = await fetch(`/api/userQuizAnswers/${userQuizId}`);
         if (!answersRes.ok) {
           throw new Error(
             `Error, failed to fetch answers ${answersRes.status}`
           );
         }
-        const dailyQuizAnswers = await answersRes.json();
-        setAnswers(dailyQuizAnswers);
+        const userQuizAnswers = await answersRes.json();
+        setAnswers(userQuizAnswers);
         resetScore();
       } catch (err) {
         console.error(err);
@@ -58,7 +58,7 @@ export function Quiz() {
   useEffect(() => {
     // Update currentQuestion when questions change
     if (questions.length > 0) {
-      setCurrentQuestion(questions[0].dailyQuestionId);
+      setCurrentQuestion(questions[0].userQuestionId);
     }
   }, [questions]);
 
@@ -66,10 +66,10 @@ export function Quiz() {
     try {
       if (currentIndex === 4 && user) {
         const userId = user.userId;
-        const dailyQuizId = questions[0].dailyQuizId;
-        const quizResult = { userId, dailyQuizId, score };
+        const userQuizId = questions[0].userQuizId;
+        const quizResult = { userId, userQuizId, score };
 
-        await addDailyQuizResult(quizResult);
+        await addUserQuizResult(quizResult);
       }
     } catch (err) {
       console.error(err);
@@ -98,9 +98,6 @@ export function Quiz() {
       if (currentIndex === 4) {
         answersIndex = 0;
         navigate('/stats');
-      }
-      if (dailyQuizId === null) {
-        setDailyQuizId(Math.floor(Math.random() * 10));
       }
     }, 1000);
     await handleEndOfQuiz(currentIndex);

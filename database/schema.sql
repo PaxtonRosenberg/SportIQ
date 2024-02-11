@@ -77,7 +77,7 @@ CREATE TABLE "public"."userQuizAnswers" (
   "userAnswerId" serial PRIMARY KEY,
   "userQuestionId" int,
   "answer" text,
-  "isCorrect" text,
+  "isCorrect" boolean,
   "createdAt" TIMESTAMPTZ(6) DEFAULT NOW(),
   unique ("userAnswerId")
 );

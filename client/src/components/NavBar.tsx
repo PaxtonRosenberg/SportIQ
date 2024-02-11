@@ -13,30 +13,32 @@ export default function NavBar() {
   return (
     <div className="navBar">
       <div className="navBar sticky">
-        <div className="navBarBox">
-          <div className="logoBox" onClick={() => navigate('/')}>
-            <h1 className="headerFont">SportIQ</h1>
-            <img className="logo" src={logo}></img>
-          </div>
-          <div className="iconBox">
-            <Link to="/community" className="navIcon">
-              <FaPeopleGroup title="Community" />
-            </Link>
-            <Link to="/stats" className="navIcon">
-              <MdInsertChartOutlined title="Stats" />
-            </Link>
-            <Link to="/help" className="navIcon">
-              <FaRegQuestionCircle title="Help" />
-            </Link>
-            {isSignedIn ? (
-              <Link to="/account" className="navIcon">
-                <FaUser title="Account" />
+        <div className="navBarContainer">
+          <div className="navBarBox">
+            <div className="logoBox" onClick={() => navigate('/')}>
+              <h1 className="headerFont">SportIQ</h1>
+              <img className="logo" src={logo}></img>
+            </div>
+            <div className="iconBox">
+              <Link to="/community" className="navIcon">
+                <FaPeopleGroup title="Community" />
               </Link>
-            ) : (
-              <Link to="/login" className="navIcon">
-                <FaUser title="Account" />
+              <Link to="/stats" className="navIcon">
+                <MdInsertChartOutlined title="Stats" />
               </Link>
-            )}
+              <Link to="/help" className="navIcon">
+                <FaRegQuestionCircle title="Help" />
+              </Link>
+              {isSignedIn ? (
+                <Link to="/account" className="navIcon">
+                  <FaUser title="Account" />
+                </Link>
+              ) : (
+                <Link to="/login" className="navIcon">
+                  <FaUser title="Account" />
+                </Link>
+              )}
+            </div>
           </div>
         </div>
         <Outlet />

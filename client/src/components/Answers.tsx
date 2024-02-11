@@ -1,9 +1,4 @@
-type Answer = {
-  dailyQuestionId: number;
-  dailyAnswerId: number;
-  isCorrect: boolean;
-  answer: string;
-};
+import { Answer } from '../lib/api';
 
 type AnswersProps = {
   answers: Answer[];
@@ -24,7 +19,8 @@ export default function Answers({
       isSelected && !answer.isCorrect && selectedAnswer === index;
     const isCorrect = answer.isCorrect;
 
-    return currentQuestion === answer.dailyQuestionId ? (
+    return currentQuestion === answer.dailyQuestionId ||
+      currentQuestion === answer.userQuestionId ? (
       <button
         key={index}
         className={
