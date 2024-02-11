@@ -31,10 +31,12 @@ export default function MyQuizzes() {
         <img className="userQuizImg" src={`${quiz.imgUrl}`}></img>
         <div className="quizNameBox">
           <div className="quizName">
-            <p>{quiz.quizName}</p>
-          </div>
-          <div className="editIcon">
-            <FaEdit />
+            <div className="quizText">
+              <p>{quiz.quizName}</p>
+            </div>
+            <div className="editIcon">
+              <FaEdit />
+            </div>
           </div>
         </div>
       </div>

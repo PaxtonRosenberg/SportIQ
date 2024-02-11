@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import { User, UserQuiz } from '../lib/api';
 import { AppContext } from './AppContext';
@@ -8,6 +8,8 @@ export default function Community() {
   const [users, setUsers] = useState<User[]>([]);
 
   const { isSignedIn } = useContext(AppContext);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getAllUserQuizzes() {
@@ -35,9 +37,21 @@ export default function Community() {
     getAllUsers();
   }, []);
 
+  function handleClick(selectedQuiz) {
+    const matchingQuiz = userQuizzes.find(
+      (quiz) => quiz.userQuizId === selectedQuiz.userQuizId
+    );
+    if (matchingQuiz !== undefined) {
+      navigate(`/communityquiz/${matchingQuiz.userQuizId}`);
+    }
+  }
+
   const quizDisplay = userQuizzes.map((quiz, index) => {
     return (
-      <div key={index} className="userQuizCard">
+      <div
+        key={index}
+        className="userQuizCard"
+        onClick={() => handleClick(quiz)}>
         <img className="userQuizImg" src={`${quiz.imgUrl}`}></img>
         <div className="quizNameBox">
           <div className="quizName">
@@ -55,18 +69,18 @@ export default function Community() {
 
   return (
     <>
-      <div className="userQuizzesHeaderBox">
-        <div className="linkBox">
-          {isSignedIn ? <Link to="/myquizzes">My Quizzes</Link> : null}
-        </div>
-        <div className="myQuizzesHeader">
-          <h1>{`Community Quizzes`}</h1>
-        </div>
-        <div className="linkBox">
-          {isSignedIn ? <Link to="/create">Create A Quiz</Link> : null}
-        </div>
-      </div>
       <div className="myQuizzesContainer">
+        <div className="userQuizzesHeaderBox">
+          <div className="linkBox">
+            {isSignedIn ? <Link to="/myquizzes">My Quizzes</Link> : null}
+          </div>
+          <div className="myQuizzesHeader">
+            <h1>{`Community Quizzes`}</h1>
+          </div>
+          <div className="linkBox">
+            {isSignedIn ? <Link to="/create">Create A Quiz</Link> : null}
+          </div>
+        </div>
         <div className="userQuizBox">{quizDisplay}</div>
       </div>
     </>

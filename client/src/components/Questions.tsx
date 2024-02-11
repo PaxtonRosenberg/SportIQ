@@ -1,9 +1,4 @@
-type Question = {
-  dailyQuestionId: number;
-  dailyQuizId: number;
-  difficulty: string;
-  question: string;
-};
+import { Question } from '../lib/api';
 
 type QuestionsProps = {
   questions: Question[];

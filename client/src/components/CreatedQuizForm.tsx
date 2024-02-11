@@ -44,14 +44,15 @@ export default function CreatedQuizForm() {
         for (let x = 0; x <= 4; x++) {
           const answerText = formData.get(`Q${i} Answer ${x}`);
 
-          const isCorrect = formData.get(`isCorrect Q${i} Answer ${x}`);
+          const formIsCorrect = formData.get(`isCorrect Q${i} Answer ${x}`);
+          const isCorrect = formIsCorrect === 'True';
+          console.log(isCorrect);
 
           if (answerText !== null && isCorrect !== null) {
             const answer: Answer = {
               answer: answerText,
-              isCorrect: isCorrect === 'true',
+              isCorrect: isCorrect,
             };
-
             question.answers.push(answer);
           }
         }
@@ -59,7 +60,6 @@ export default function CreatedQuizForm() {
       }
 
       const userQuizData = { userId, quizName, quizImg, questions };
-      console.log(userQuizData);
 
       if (userId !== undefined) {
         await addUserQuiz(userQuizData);
