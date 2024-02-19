@@ -599,6 +599,87 @@ app.put(
   }
 );
 
+async function deleteUserQuizId(userQuizId: number, userId: number) {
+  const sql = `
+      delete from "userQuizzes"
+        where "userId" = $1 and "userQuizId" = $2
+        returning *;
+    `;
+  const params = [userQuizId, userId];
+  const quizData = await db.query(sql, params);
+  const quiz = quizData.rows[0];
+
+  if (!quiz) {
+    throw new ClientError(404, `Cannot find quiz with 'quizId' ${userQuizId}`);
+  }
+
+  return quiz.userQuizId;
+}
+
+async function deleteUserQuizQuestions(userQuizId: number) {
+  const sql = `
+      delete from "userQuizQuestions"
+        where "userQuizId" = $1
+    `;
+  const params = [userQuizId];
+  await db.query(sql, params);
+}
+
+async function deleteUserQuizAnswers(userQuestionId: number) {
+  const sql = `
+      delete "userQuizAnswers"
+      where "userQuestionId" = $1
+    `;
+
+  const params = [userQuestionId];
+  await db.query(sql, params);
+}
+
+app.delete(
+  '/api/auth/userQuizzes/:userQuizId',
+  authMiddleware,
+  async (req, res, next) => {
+    try {
+      if (!req.user) {
+        throw new ClientError(401, 'not logged in');
+      }
+      const userQuizId = Number(req.params.userQuizId);
+
+      const userId = req.user?.userId;
+      if (!userQuizId) {
+        throw new ClientError(400, 'quiz was not deleted, error');
+      }
+
+      if (userId !== undefined) {
+        await deleteUserQuizId(userId, userQuizId);
+        await deleteUserQuizQuestions(userQuizId);
+
+        // Fetch userQuestionIds associated with the quiz
+        const questionsRes = await db.query(
+          `
+      SELECT "userQuestionId"
+      FROM "userQuizQuestions"
+      WHERE "userQuizId" = $1
+    `,
+          [userQuizId]
+        );
+
+        const userQuestionIds = questionsRes.rows.map(
+          (row) => row.userQuestionId
+        );
+
+        // Delete answers associated with each question
+        for (const userQuestionId of userQuestionIds) {
+          await deleteUserQuizAnswers(userQuestionId);
+        }
+      }
+      res.status(201).json('user quiz deleted');
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
 /*
  * Middleware that handles paths that aren't handled by static middleware
  * or API route handlers.

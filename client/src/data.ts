@@ -5,6 +5,7 @@ import {
   Answer,
   UserQuizData,
   EditedUserQuizData,
+  UserQuizDataToDelete,
 } from './lib/api';
 
 export async function addDailyQuizResult(
@@ -130,4 +131,35 @@ export async function fetchQuizDetails(
   } catch (error: any) {
     throw new Error(`Error fetching quiz details: ${error.message}`);
   }
+}
+
+export async function deleteUserQuiz(
+  userQuizDataToDelete: UserQuizDataToDelete
+): Promise<UserQuizDataToDelete> {
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    throw new Error('Authentication token not found');
+  }
+
+  const req = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+    body: JSON.stringify(userQuizDataToDelete),
+  };
+
+  const res = await fetch(
+    `/api/auth/userQuizzes/${userQuizDataToDelete.parsedUserQuizId}`,
+    req
+  );
+
+  if (res.status === 401) {
+    throw new Error(`Authentication failed ${res.status}`);
+  } else if (!res.ok) {
+    throw new Error(`fetch Error ${res.status}`);
+  }
+  return await res.json();
 }

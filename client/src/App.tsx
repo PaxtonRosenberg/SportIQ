@@ -25,6 +25,7 @@ export default function App() {
   const [score, setScore] = useState<number>(0);
   const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
   const [editing, setEditing] = useState<boolean>(false);
+  const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
 
   useEffect(() => {
     const auth = localStorage.getItem(tokenKey);
@@ -74,6 +75,10 @@ export default function App() {
     editing ? setEditing(false) : setEditing(true);
   }
 
+  function handleDeleteClick() {
+    showDeleteModal ? setShowDeleteModal(false) : setShowDeleteModal(true);
+  }
+
   const contextValue = {
     user,
     token,
@@ -86,6 +91,8 @@ export default function App() {
     editing,
     handleEdit,
     setScore,
+    showDeleteModal,
+    handleDeleteClick,
   };
 
   return (

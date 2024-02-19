@@ -121,3 +121,8 @@ export type EditedAnswer = {
   isCorrect: boolean;
   answer: string;
 };
+
+export type UserQuizDataToDelete = {
+  userId: number | undefined;
+  parsedUserQuizId: number;
+};

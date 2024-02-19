@@ -67,6 +67,15 @@ button {
   box-shadow: 0.5rem 0.5rem 0.5rem darkgrey;
 }
 
+.navBarNoScroll {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  overflow-y: hidden;
+  box-shadow: 0.5rem 0.5rem 0.5rem darkgrey;
+}
+
 .sticky {
   position: fixed;
   top: 0;
@@ -462,6 +471,7 @@ h4 {
 .linkBox {
   flex-basis: calc(100% / 3);
   text-align: center;
+  cursor: pointer;
 }
 
 .userQuizBox {
@@ -539,6 +549,74 @@ h4 {
   width: 275px;
   box-shadow: 3px 3px 3px grey;
   object-fit: cover;
+}
+
+.deleteModalContainer {
+  height: 100vh;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.deleteModal {
+  height: 275px;
+  width: 350px;
+  border: 5px solid black;
+  border-radius: 10%;
+  background-color: #faf9f6;
+  font-family: Montserrat, sans-serif;
+}
+
+.deleteBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.deleteBox > button {
+  border: 0.25rem solid black;
+  border-radius: 2rem;
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 0;
+  width: 6rem;
+  height: 3rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.deleteBox > p {
+  text-align: center;
+}
+
+.deleteQuizText {
+  color: red;
+  text-decoration: underline;
+}
+
+.yes {
+  background-color: red;
+  color: white;
+}
+
+.no {
+  background-color: green;
+  color: white;
 }
 
 @media screen and (width <=768px) {
@@ -806,5 +884,25 @@ h4 {
 
   .createdQuizFormInput {
     width: 20rem;
+  }
+
+  .deleteModal {
+    height: 200px;
+    width: 250px;
+  }
+
+  .deleteBox > button {
+    background-color: white;
+    border: 0.25rem solid black;
+    border-radius: 2rem;
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 0;
+    margin: 0.5rem;
+    width: 4rem;
+    height: 2rem;
+    text-align: center;
+    cursor: pointer;
   }
 }

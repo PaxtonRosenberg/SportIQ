@@ -2,7 +2,7 @@ import { FormEvent, useContext, useEffect, useState } from 'react';
 import { AppContext } from './AppContext';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { UserQuizQuestionsAndAnswers } from '../lib/api';
-import { updateUserQuiz } from '../data';
+import { deleteUserQuiz, updateUserQuiz } from '../data';
 
 import EditFormInputs from './EditFormInputs';
 
@@ -11,7 +11,14 @@ export default function EditQuiz() {
 
   const { userQuizId } = useParams();
 
-  const { user, isSignedIn, handleEdit, editing } = useContext(AppContext);
+  const {
+    user,
+    isSignedIn,
+    handleEdit,
+    editing,
+    handleDeleteClick,
+    showDeleteModal,
+  } = useContext(AppContext);
 
   const [questionsAndAnswers, setQuestionsAndAnswers] = useState<
     UserQuizQuestionsAndAnswers[] | null
@@ -145,7 +152,6 @@ export default function EditQuiz() {
           questions,
           userQuizId: parsedUserQuizId,
         };
-        console.log('do we get here?');
         await updateUserQuiz(editedUserQuizData);
         navigate('/myquizzes');
         handleEdit();
@@ -155,8 +161,36 @@ export default function EditQuiz() {
     }
   }
 
+  async function handleYesClick() {
+    const userId = user?.userId;
+    const parsedUserQuizId = userQuizId ? parseInt(userQuizId) : 0;
+
+    const userQuizDataToDelete = {
+      userId,
+      parsedUserQuizId,
+    };
+    await deleteUserQuiz(userQuizDataToDelete);
+    navigate('/myquizzes');
+    handleDeleteClick();
+  }
+
   return (
     <>
+      {showDeleteModal ? (
+        <div className=" deleteModalContainer overlay">
+          <div className="deleteModal">
+            <div className="deleteBox">
+              <p>Are you sure you would like to delete this quiz?</p>
+              <button className="no" onClick={() => handleDeleteClick()}>
+                No
+              </button>
+              <button className="yes" onClick={() => handleYesClick()}>
+                Yes
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
       <div className="userQuizzesHeaderBox">
         <div className="linkBox" onClick={() => handleEdit()}>
           {isSignedIn ? <Link to="/myquizzes">My Quizzes</Link> : null}
@@ -164,7 +198,11 @@ export default function EditQuiz() {
         <div className="myQuizzesHeader">
           <h1>{`Edit Quiz`}</h1>
         </div>
-        <div className="linkBox">Delete Quiz</div>
+        <div
+          className="linkBox deleteQuizText"
+          onClick={() => handleDeleteClick()}>
+          Delete Quiz
+        </div>
       </div>
       <div className="formBox">
         <form onSubmit={handleSubmit}>
