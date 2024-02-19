@@ -47,7 +47,6 @@ export default function Results() {
 
   for (let i = 0; i < dailyQuizResults.length; i++) {
     avgScore += dailyQuizResults[i].score;
-    console.log(avgScore);
   }
 
   for (let i = 0; i < userQuizResults.length; i++) {
