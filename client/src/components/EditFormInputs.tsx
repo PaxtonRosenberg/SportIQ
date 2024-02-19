@@ -114,9 +114,10 @@ export default function EditFormInputs() {
       const updatedQuestionsAndAnswers = [...questionsAndAnswers];
       updatedQuestionsAndAnswers[questionIndex].answers[answerIndex].isCorrect =
         newValue;
-      console.log(updatedQuestionsAndAnswers);
       setQuestionsAndAnswers(updatedQuestionsAndAnswers);
       console.log('clicked');
+      console.log(updatedQuestionsAndAnswers);
+      console.log(questionsAndAnswers);
     }
   };
 
@@ -149,7 +150,11 @@ export default function EditFormInputs() {
               <input
                 required
                 type="radio"
-                checked={questionsAndAnswers !== null}
+                checked={
+                  questionsAndAnswers !== null &&
+                  questionsAndAnswers[questionIndex].answers[answerIndex]
+                    .isCorrect
+                }
                 name={`isCorrect Question ${questionNum} Answer ${answerNum}`}
                 id={`isCorrect Question ${questionNum} Answer ${answerNum} Yes`}
                 value="true"

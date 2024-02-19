@@ -87,9 +87,7 @@ export default function EditQuiz() {
       const parsedUserQuizId = userQuizId ? parseInt(userQuizId) : 0;
 
       for (let i = 0; i < 5; i++) {
-        console.log(`Processing question ${i + 1}`);
         const questionText = formData.get(`Question ${i + 1}`)?.toString();
-        console.log(questionText);
 
         if (questionText === null && questionText === undefined) {
           return;
@@ -108,7 +106,6 @@ export default function EditQuiz() {
             const answerText = formData
               .get(`Question ${i + 1} Answer ${x + 1}`)
               ?.toString();
-            console.log(answerText);
 
             const formIsCorrect = formData.get(
               `isCorrect Question ${i + 1} Answer ${x + 1}`
