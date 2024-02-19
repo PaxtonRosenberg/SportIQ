@@ -12,6 +12,8 @@ export type AppContextValues = {
   isSignedIn: boolean;
   editing: boolean;
   handleEdit: () => void;
+  showDeleteModal: boolean;
+  handleDeleteClick: () => void;
 };
 
 export const AppContext = createContext<AppContextValues>({
@@ -25,6 +27,8 @@ export const AppContext = createContext<AppContextValues>({
   isSignedIn: false,
   editing: false,
   handleEdit: () => undefined,
+  showDeleteModal: false,
+  handleDeleteClick: () => undefined,
 });
 
 export const UserProvider = AppContext.Provider;

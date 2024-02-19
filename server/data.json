@@ -801,23 +801,23 @@
     {
       "questions": [
         {
-          "question": "Which sport is NOT traditionally played during the Mongolian Naadam festival?",
+          "question": "In what year did Kobe Bryant score a career high of 81 points against the Toronto Raptors?",
           "difficulty": "Medium",
           "answers": [
             {
-              "answer": "Wrestling",
+              "answer": "1998",
+              "isCorrect": false
+            },
+            {
+              "answer": "2008",
+              "isCorrect": false
+            },
+            {
+              "answer": "2006",
               "isCorrect": true
             },
             {
-              "answer": "Archery",
-              "isCorrect": true
-            },
-            {
-              "answer": "Horse-Racing",
-              "isCorrect": true
-            },
-            {
-              "answer": "American Football",
+              "answer": "2002",
               "isCorrect": false
             }
           ]

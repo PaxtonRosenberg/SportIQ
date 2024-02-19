@@ -8,11 +8,11 @@ import { AppContext } from './AppContext';
 
 export default function NavBar() {
   const navigate = useNavigate();
-  const { isSignedIn } = useContext(AppContext);
+  const { isSignedIn, showDeleteModal } = useContext(AppContext);
 
   return (
     <div className="navBar">
-      <div className="navBar sticky">
+      <div className={showDeleteModal ? 'navBarNoScroll' : 'navBar sticky'}>
         <div className="navBarContainer">
           <div className="navBarBox">
             <div className="logoBox" onClick={() => navigate('/')}>
