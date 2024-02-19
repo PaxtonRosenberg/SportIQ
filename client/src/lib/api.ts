@@ -12,12 +12,12 @@ export type Auth = {
 };
 
 export type DailyQuizResult = {
-  loggedScore: number;
+  score: number;
   dailyQuizId: number;
 };
 
 export type UserQuizResult = {
-  loggedScore: number;
+  score: number;
   userQuizId: number;
   userId: number;
 };
