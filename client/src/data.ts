@@ -1,6 +1,6 @@
 import {
-  DailyQuizResult,
-  UserQuizResult,
+  LoggedDailyQuizResult,
+  LoggedUserQuizResult,
   Question,
   Answer,
   UserQuizData,
@@ -8,8 +8,8 @@ import {
 } from './lib/api';
 
 export async function addDailyQuizResult(
-  quizResult: DailyQuizResult
-): Promise<DailyQuizResult> {
+  quizResult: LoggedDailyQuizResult
+): Promise<LoggedDailyQuizResult> {
   const req = {
     method: 'POST',
     headers: {
@@ -24,8 +24,8 @@ export async function addDailyQuizResult(
 }
 
 export async function addUserQuizResult(
-  quizResult: UserQuizResult
-): Promise<UserQuizResult> {
+  quizResult: LoggedUserQuizResult
+): Promise<LoggedUserQuizResult> {
   const req = {
     method: 'POST',
     headers: {

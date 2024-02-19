@@ -22,6 +22,17 @@ export type UserQuizResult = {
   userId: number;
 };
 
+export type LoggedDailyQuizResult = {
+  loggedScore: number;
+  dailyQuizId: number;
+};
+
+export type LoggedUserQuizResult = {
+  loggedScore: number;
+  userQuizId: number;
+  userId: number;
+};
+
 export type UserQuizDetails = {
   createdAt: Date;
   imgUrl: string;
