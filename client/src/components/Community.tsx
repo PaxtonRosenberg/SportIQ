@@ -53,15 +53,17 @@ export default function Community() {
         className="userQuizCard"
         onClick={() => handleClick(quiz)}>
         <img className="userQuizImg" src={`${quiz.imgUrl}`}></img>
-        <div className="quizNameBox">
-          <div className="quizName">
+        <div className="quizNameBoxWithByLine">
+          <div className="quizNameWithByLine">
             <p>{quiz.quizName}</p>
-            {users.map((user, userIndex) => {
-              return user.userId === quiz.userId ? (
-                <p key={userIndex}>{`By: ${user.username}`}</p>
-              ) : null;
-            })}
           </div>
+          {users.map((user, userIndex) => {
+            return user.userId === quiz.userId ? (
+              <div className="quizNameWithByLine">
+                <p key={userIndex}>{`By: ${user.username}`}</p>
+              </div>
+            ) : null;
+          })}
         </div>
       </div>
     );
