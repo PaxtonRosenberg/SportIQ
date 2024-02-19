@@ -12,6 +12,7 @@ import Results from './components/Results';
 import CreatedQuizForm from './components/CreatedQuizForm';
 import MyQuizzes from './components/MyQuizzes';
 import CommunityQuiz from './components/CommunityQuiz';
+import EditQuiz from './components/EditQuiz';
 import { User, Auth } from './lib/api';
 import './App.css';
 
@@ -23,6 +24,7 @@ export default function App() {
   const [isAuthorizing, setIsAuthorizing] = useState(true);
   const [score, setScore] = useState<number>(0);
   const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
+  const [editing, setEditing] = useState<boolean>(false);
 
   useEffect(() => {
     const auth = localStorage.getItem(tokenKey);
@@ -61,11 +63,15 @@ export default function App() {
   }
 
   function incrementScore() {
-    setScore(score + 1);
+    setScore((prevScore) => prevScore + 1);
   }
 
   function resetScore() {
     setScore(0);
+  }
+
+  function handleEdit() {
+    editing ? setEditing(false) : setEditing(true);
   }
 
   const contextValue = {
@@ -77,6 +83,9 @@ export default function App() {
     incrementScore,
     resetScore,
     isSignedIn,
+    editing,
+    handleEdit,
+    setScore,
   };
 
   return (
@@ -96,6 +105,7 @@ export default function App() {
             <Route
               path="/communityquiz/:userQuizId"
               element={<CommunityQuiz />}></Route>
+            <Route path="/edit/:userQuizId" element={<EditQuiz />}></Route>
           </Route>
         </Routes>
       </AppContext.Provider>

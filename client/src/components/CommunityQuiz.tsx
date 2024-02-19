@@ -53,7 +53,7 @@ export default function CommunityQuiz() {
     }
 
     fetchData();
-  }, []);
+  }, [userQuizId]);
 
   useEffect(() => {
     // Update currentQuestion when questions change
@@ -61,20 +61,6 @@ export default function CommunityQuiz() {
       setCurrentQuestion(questions[0].userQuestionId);
     }
   }, [questions]);
-
-  async function handleEndOfQuiz(currentIndex: number) {
-    try {
-      if (currentIndex === 4 && user) {
-        const userId = user.userId;
-        const userQuizId = questions[0].userQuizId;
-        const quizResult = { userId, userQuizId, score };
-
-        await addUserQuizResult(quizResult);
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  }
 
   async function handleClick(answersIndex: number, answers: Answer[]) {
     if (selectedAnswer !== null) {
@@ -100,7 +86,23 @@ export default function CommunityQuiz() {
         navigate('/stats');
       }
     }, 1000);
+
     await handleEndOfQuiz(currentIndex);
+  }
+
+  async function handleEndOfQuiz(currentIndex: number) {
+    try {
+      if (currentIndex === 4 && user) {
+        const userId = user.userId;
+        const userQuizId = questions[0].userQuizId;
+        const loggedScore = Number(score !== 0 ? score + 1 : score);
+        const quizResult = { userId, userQuizId, loggedScore };
+
+        await addUserQuizResult(quizResult);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   return (

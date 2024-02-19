@@ -16,7 +16,7 @@ export default function CreatedQuizForm() {
       const formData = new FormData(e.currentTarget);
       const userId = user?.userId;
       const quizName = formData.get('quizName');
-      const quizImg = formData.get('quizImg');
+      const imgUrl = formData.get('imgUrl');
 
       const questions: Question[] = [];
 
@@ -31,7 +31,7 @@ export default function CreatedQuizForm() {
       };
 
       for (let i = 1; i <= 5; i++) {
-        const questionText = formData.get(`Question${i}`);
+        const questionText = formData.get(`Question ${i}`);
         if (questionText === null) {
           return;
         }
@@ -41,12 +41,14 @@ export default function CreatedQuizForm() {
           answers: [],
         };
 
-        for (let x = 0; x <= 4; x++) {
-          const answerText = formData.get(`Q${i} Answer ${x}`);
+        for (let x = 1; x <= 4; x++) {
+          const answerText = formData.get(`Question ${i} Answer ${x}`);
 
-          const formIsCorrect = formData.get(`isCorrect Q${i} Answer ${x}`);
-          const isCorrect = formIsCorrect === 'True';
-          console.log(isCorrect);
+          const formIsCorrect = formData.get(
+            `isCorrect Question ${i} Answer ${x}`
+          );
+          console.log(formIsCorrect);
+          const isCorrect = formIsCorrect === 'true';
 
           if (answerText !== null && isCorrect !== null) {
             const answer: Answer = {
@@ -59,7 +61,7 @@ export default function CreatedQuizForm() {
         questions.push(question);
       }
 
-      const userQuizData = { userId, quizName, quizImg, questions };
+      const userQuizData = { userId, quizName, imgUrl, questions };
 
       if (userId !== undefined) {
         await addUserQuiz(userQuizData);
@@ -85,22 +87,6 @@ export default function CreatedQuizForm() {
       </div>
       <div className="formBox">
         <form onSubmit={handleSubmit}>
-          <div className="createdQuizInputBox">
-            <input
-              required
-              className="createdQuizFormInput"
-              type="text"
-              name="quizName"
-              placeholder="Quiz Name*"></input>
-          </div>
-          <div className="createdQuizInputBox">
-            <input
-              required
-              className="createdQuizFormInput"
-              type="text"
-              name="quizImg"
-              placeholder="Quiz Image URL*"></input>
-          </div>
           <QuestionAndAnswerFormInputs />
           <div className="buttonBox">
             <button className="submitButton">Submit</button>

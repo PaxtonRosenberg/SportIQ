@@ -11,11 +11,28 @@ export type Auth = {
   token: string;
 };
 
-export type QuizResult = {
+export type DailyQuizResult = {
+  loggedScore: number;
   dailyQuizId: number;
+};
+
+export type UserQuizResult = {
+  loggedScore: number;
   userQuizId: number;
   userId: number;
-  score: number;
+};
+
+export type UserQuizDetails = {
+  createdAt: Date;
+  imgUrl: string;
+  quizName: string;
+  userId: number;
+  userQuizId: number;
+};
+
+export type UserQuizQuestionsAndAnswers = {
+  question: UserQuestion;
+  answers: UserAnswers[];
 };
 
 export type UserQuiz = {
@@ -23,12 +40,25 @@ export type UserQuiz = {
   quizName: string;
   imgUrl: string;
   userId: number;
-  answer: string;
+  answers: UserAnswers[];
   isCorrect: boolean;
-  question: string;
+  question: UserQuestion[];
   useranswerId: number;
   userQuestionId: number;
   createdAt: Date;
+};
+
+export type UserQuestion = {
+  question: string;
+  userQuestionId: number;
+  userQuizId: number;
+};
+
+export type UserAnswers = {
+  answer: string;
+  isCorrect: boolean;
+  userAnswerId: number;
+  userQuestionId: number;
 };
 
 export type Question = {
@@ -43,6 +73,38 @@ export type Question = {
 export type Answer = {
   dailyQuestionId: number;
   dailyAnswerId: number;
+  userQuestionId: number;
+  userAnswerId: number;
+  isCorrect: boolean;
+  answer: string;
+};
+
+export type UserQuizData = {
+  userId: number | undefined;
+  quizName: FormDataEntryValue | null;
+  imgUrl: FormDataEntryValue | null;
+};
+
+export type EditedUserQuizData = {
+  userId: number | undefined;
+  quizName: FormDataEntryValue | null;
+  imgUrl: FormDataEntryValue | null;
+  userQuizId: number;
+};
+
+export type QuizDataToUpdate = {
+  question: EditedQuestion[];
+  answers: EditedAnswer[];
+};
+
+export type EditedQuestion = {
+  question: string;
+  userQuestionId: number;
+  userQuizId: number;
+  answers: EditedAnswer[];
+};
+
+export type EditedAnswer = {
   userQuestionId: number;
   userAnswerId: number;
   isCorrect: boolean;

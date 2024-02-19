@@ -152,11 +152,11 @@
             },
             {
               "answer": "Milwaukee Bucks",
-              "isCorrect": false
+              "isCorrect": true
             },
             {
-              "answer": "Milwaukee Bucks",
-              "isCorrect": true
+              "answer": "Atlanta Hawks",
+              "isCorrect": false
             }
           ]
         },
@@ -169,16 +169,16 @@
               "isCorrect": false
             },
             {
-              "answer": "Sidney Crosby",
-              "isCorrect": false
+              "answer": "Wayne Gretzky",
+              "isCorrect": true
             },
             {
               "answer": "Gordie Howe",
               "isCorrect": false
             },
             {
-              "answer": "Wayne Gretzky",
-              "isCorrect": true
+              "answer": "Sidney Crosby",
+              "isCorrect": false
             }
           ]
         },
@@ -239,16 +239,16 @@
               "isCorrect": false
             },
             {
-              "answer": "Japan",
-              "isCorrect": false
+              "answer": "Qatar",
+              "isCorrect": true
             },
             {
               "answer": "Switzerland",
               "isCorrect": false
             },
             {
-              "answer": "Qatar",
-              "isCorrect": true
+              "answer": "Japan",
+              "isCorrect": false
             }
           ]
         },
@@ -279,8 +279,8 @@
           "difficulty": "Medium",
           "answers": [
             {
-              "answer": "Daniil Kvyat",
-              "isCorrect": false
+              "answer": "Carlos Sainz Jr.",
+              "isCorrect": true
             },
             {
               "answer": "Jolyon Palmer",
@@ -291,8 +291,8 @@
               "isCorrect": false
             },
             {
-              "answer": "Carlos Sainz Jr.",
-              "isCorrect": true
+              "answer": "Daniil Kvyat",
+              "isCorrect": false
             }
           ]
         },
@@ -331,12 +331,12 @@
               "isCorrect": false
             },
             {
-              "answer": "Colombia",
-              "isCorrect": false
-            },
-            {
               "answer": "Chile",
               "isCorrect": true
+            },
+            {
+              "answer": "Columbia",
+              "isCorrect": false
             }
           ]
         }
@@ -397,16 +397,16 @@
               "isCorrect": false
             },
             {
-              "answer": "1959",
-              "isCorrect": false
+              "answer": "1961",
+              "isCorrect": true
             },
             {
               "answer": "1963",
               "isCorrect": false
             },
             {
-              "answer": "1961",
-              "isCorrect": true
+              "answer": "1959",
+              "isCorrect": false
             }
           ]
         },
@@ -419,7 +419,7 @@
               "isCorrect": false
             },
             {
-              "answer": "McLaren Honda",
+              "answer": "Mercedes-AMG Petronas",
               "isCorrect": false
             },
             {
@@ -427,7 +427,7 @@
               "isCorrect": false
             },
             {
-              "answer": "Mercedes-AMG Petronas",
+              "answer": "McLaren Honda",
               "isCorrect": true
             }
           ]
@@ -451,6 +451,804 @@
             {
               "answer": "Seattle Sounders",
               "isCorrect": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "question": "Who holds the record for the most career home runs in Major League Baseball (MLB)?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Alex Rodriguez",
+              "isCorrect": false
+            },
+            {
+              "answer": "Barry Bonds",
+              "isCorrect": true
+            },
+            {
+              "answer": "Babe Ruth",
+              "isCorrect": false
+            },
+            {
+              "answer": "Hank Aaron",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Which team won the 2021 World Series?",
+          "difficulty": "Easy",
+          "answers": [
+            {
+              "answer": "Los Angeles Dodgers",
+              "isCorrect": false
+            },
+            {
+              "answer": "Houston Astros",
+              "isCorrect": false
+            },
+            {
+              "answer": "Atlanta Braves",
+              "isCorrect": true
+            },
+            {
+              "answer": "New York Yankees",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Who is known as 'The Sultan of Swat'?",
+          "difficulty": "Easy",
+          "answers": [
+            {
+              "answer": "Lou Gehrig",
+              "isCorrect": false
+            },
+            {
+              "answer": "Jackie Robinson",
+              "isCorrect": false
+            },
+            {
+              "answer": "Babe Ruth",
+              "isCorrect": true
+            },
+            {
+              "answer": "Ty Cobb",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "In which year was the designated hitter (DH) rule first introduced in Major League Baseball?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "1973",
+              "isCorrect": true
+            },
+            {
+              "answer": "1985",
+              "isCorrect": false
+            },
+            {
+              "answer": "1968",
+              "isCorrect": false
+            },
+            {
+              "answer": "1992",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Who is the all-time hits leader in Major League Baseball (MLB)?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "Pete Rose",
+              "isCorrect": true
+            },
+            {
+              "answer": "Ichiro Suzuki",
+              "isCorrect": false
+            },
+            {
+              "answer": "Derek Jeter",
+              "isCorrect": false
+            },
+            {
+              "answer": "Hank Aaron",
+              "isCorrect": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "question": "Which NBA team has the most NBA Finals appearances?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Chicago Bulls",
+              "isCorrect": false
+            },
+            {
+              "answer": "Los Angeles Lakers",
+              "isCorrect": true
+            },
+            {
+              "answer": "Boston Celtics",
+              "isCorrect": false
+            },
+            {
+              "answer": "Golden State Warriors",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Who holds the record for the most triple-doubles in NBA history?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Magic Johnson",
+              "isCorrect": false
+            },
+            {
+              "answer": "Oscar Robertson",
+              "isCorrect": false
+            },
+            {
+              "answer": "LeBron James",
+              "isCorrect": false
+            },
+            {
+              "answer": "Russell Westbrook",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "question": "Which NBA team had a 73-9 regular-season record, the best in NBA history, before the Golden State Warriors surpassed it?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "Chicago Bulls",
+              "isCorrect": false
+            },
+            {
+              "answer": "Los Angeles Lakers",
+              "isCorrect": false
+            },
+            {
+              "answer": "Golden State Warriors",
+              "isCorrect": true
+            },
+            {
+              "answer": "San Antonio Spurs",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Who is the all-time leading scorer for the San Antonio Spurs?",
+          "difficulty": "Easy",
+          "answers": [
+            {
+              "answer": "Tim Duncan",
+              "isCorrect": true
+            },
+            {
+              "answer": "Tony Parker",
+              "isCorrect": false
+            },
+            {
+              "answer": "David Robinson",
+              "isCorrect": false
+            },
+            {
+              "answer": "Manu Ginobili",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Which NBA player holds the record for the highest career points per game average?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "LeBron James",
+              "isCorrect": false
+            },
+            {
+              "answer": "Michael Jordan",
+              "isCorrect": true
+            },
+            {
+              "answer": "Kareem Abdul-Jabbar",
+              "isCorrect": false
+            },
+            {
+              "answer": "Wilt Chamberlain",
+              "isCorrect": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "question": "Which sport is NOT traditionally played during the Mongolian Naadam festival?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Wrestling",
+              "isCorrect": false
+            },
+            {
+              "answer": "American Football",
+              "isCorrect": true
+            },
+            {
+              "answer": "Horse-Racing",
+              "isCorrect": false
+            },
+            {
+              "answer": "Archery",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Which Formula 1 driver finished 3rd in the Driver's Championship during the 2017 season?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Lewis Hamilton",
+              "isCorrect": false
+            },
+            {
+              "answer": "Valtteri Bottas",
+              "isCorrect": true
+            },
+            {
+              "answer": "Sebastian Vettel",
+              "isCorrect": false
+            },
+            {
+              "answer": "Carlos Sainz Jr.",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Who won the 'Champions League' in 1999?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Barcelona",
+              "isCorrect": false
+            },
+            {
+              "answer": "Bayern Munich",
+              "isCorrect": false
+            },
+            {
+              "answer": "Liverpool",
+              "isCorrect": false
+            },
+            {
+              "answer": "Manchester United",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "question": "The F1 season of 1994 is remembered for what tragic event?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "The Showdown (Australia)",
+              "isCorrect": false
+            },
+            {
+              "answer": "Verstappen on Fire (Germany)",
+              "isCorrect": false
+            },
+            {
+              "answer": "Schumacher's Ban (Britain)",
+              "isCorrect": false
+            },
+            {
+              "answer": "Death of Ayrton Senna (San Marino)",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "question": "Which teams played in the first Super Bowl in 1967?",
+          "difficulty": "Easy",
+          "answers": [
+            {
+              "answer": "Green Bay Packers and Kansas City Chiefs",
+              "isCorrect": true
+            },
+            {
+              "answer": "Green Bay Packers and Chicago Bears",
+              "isCorrect": false
+            },
+            {
+              "answer": "Los Angeles Rams and San Francisco 49ers",
+              "isCorrect": false
+            },
+            {
+              "answer": "Dallas Cowboys and Philadelphia Eagles",
+              "isCorrect": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "question": "Which sport is NOT traditionally played during the Mongolian Naadam festival?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Wrestling",
+              "isCorrect": true
+            },
+            {
+              "answer": "Archery",
+              "isCorrect": true
+            },
+            {
+              "answer": "Horse-Racing",
+              "isCorrect": true
+            },
+            {
+              "answer": "American Football",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Which Formula 1 driver switched teams in the middle of the 2017 season?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Daniil Kvyat",
+              "isCorrect": false
+            },
+            {
+              "answer": "Jolyon Palmer",
+              "isCorrect": false
+            },
+            {
+              "answer": "Rio Haryanto",
+              "isCorrect": false
+            },
+            {
+              "answer": "Carlos Sainz Jr.",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "question": "Who won the 'Champions League' in 1999?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Barcelona",
+              "isCorrect": false
+            },
+            {
+              "answer": "Bayern Munich",
+              "isCorrect": false
+            },
+            {
+              "answer": "Liverpool",
+              "isCorrect": false
+            },
+            {
+              "answer": "Manchester United",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "question": "The F1 season of 1994 is remembered for what tragic event?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "The Showdown (Australia)",
+              "isCorrect": false
+            },
+            {
+              "answer": "Verstappen on Fire (Germany)",
+              "isCorrect": false
+            },
+            {
+              "answer": "Schumacher's Ban (Britain)",
+              "isCorrect": false
+            },
+            {
+              "answer": "Death of Ayrton Senna (San Marino)",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "question": "When was the first official international game played?",
+          "difficulty": "Easy",
+          "answers": [
+            {
+              "answer": "1880",
+              "isCorrect": false
+            },
+            {
+              "answer": "1863",
+              "isCorrect": false
+            },
+            {
+              "answer": "1865",
+              "isCorrect": false
+            },
+            {
+              "answer": "1872",
+              "isCorrect": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "question": "What is the oldest team in the NFL?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Dallas Cowboys",
+              "isCorrect": false
+            },
+            {
+              "answer": "Chicago Bears",
+              "isCorrect": false
+            },
+            {
+              "answer": "Green Bay Packers",
+              "isCorrect": false
+            },
+            {
+              "answer": "Arizona Cardinals",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "question": "A stimpmeter measures the speed of a ball over what surface?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Golf Putting Green",
+              "isCorrect": true
+            },
+            {
+              "answer": "Football Pitch",
+              "isCorrect": false
+            },
+            {
+              "answer": "Cricket Outfield",
+              "isCorrect": false
+            },
+            {
+              "answer": "Pinball Table",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Who is often called 'the Maestro' in the men's tennis circuit?",
+          "difficulty": "Easy",
+          "answers": [
+            {
+              "answer": "Boris Becker",
+              "isCorrect": false
+            },
+            {
+              "answer": "Bill Tilden",
+              "isCorrect": false
+            },
+            {
+              "answer": "Roger Federer",
+              "isCorrect": true
+            },
+            {
+              "answer": "Pete Sampras",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "What is the exact length of one non-curved part in Lane 1 of an Olympic Track?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "84.39m",
+              "isCorrect": true
+            },
+            {
+              "answer": "100m",
+              "isCorrect": false
+            },
+            {
+              "answer": "100yd",
+              "isCorrect": false
+            },
+            {
+              "answer": "109.36yd",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Which of these Russian cities did NOT contain a stadium that was used in the 2018 FIFA World Cup?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "Vladivostok",
+              "isCorrect": true
+            },
+            {
+              "answer": "Rostov-on-Don",
+              "isCorrect": false
+            },
+            {
+              "answer": "Yekaterinburg",
+              "isCorrect": false
+            },
+            {
+              "answer": "Kaliningrad",
+              "isCorrect": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "question": "Which football club is known as 'The Red Devils'?",
+          "difficulty": "Easy",
+          "answers": [
+            {
+              "answer": "Real Madrid",
+              "isCorrect": false
+            },
+            {
+              "answer": "Manchester City",
+              "isCorrect": false
+            },
+            {
+              "answer": "Liverpool",
+              "isCorrect": false
+            },
+            {
+              "answer": "Manchester United",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "question": "In which city does FC Barcelona play its home matches?",
+          "difficulty": "Easy",
+          "answers": [
+            {
+              "answer": "Madrid",
+              "isCorrect": false
+            },
+            {
+              "answer": "Barcelona",
+              "isCorrect": true
+            },
+            {
+              "answer": "Milan",
+              "isCorrect": false
+            },
+            {
+              "answer": "Paris",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Which team won the UEFA Champions League three times in a row from 1956 to 1958?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Real Madrid",
+              "isCorrect": true
+            },
+            {
+              "answer": "AC Milan",
+              "isCorrect": false
+            },
+            {
+              "answer": "Bayern Munich",
+              "isCorrect": false
+            },
+            {
+              "answer": "Barcelona",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Which football club's stadium is known as 'The Theatre of Dreams'?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Chelsea",
+              "isCorrect": false
+            },
+            {
+              "answer": "Arsenal",
+              "isCorrect": false
+            },
+            {
+              "answer": "Manchester United",
+              "isCorrect": false
+            },
+            {
+              "answer": "Manchester City",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "question": "Which country hosted the FIFA World Cup in 2002, and which nation won that tournament?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "Germany, Brazil",
+              "isCorrect": false
+            },
+            {
+              "answer": "Japan/South Korea, Brazil",
+              "isCorrect": true
+            },
+            {
+              "answer": "Italy, France",
+              "isCorrect": false
+            },
+            {
+              "answer": "USA, Germany",
+              "isCorrect": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "question": "Which NFL team is known as 'America's Team'?",
+          "difficulty": "Easy",
+          "answers": [
+            {
+              "answer": "New England Patriots",
+              "isCorrect": false
+            },
+            {
+              "answer": "Dallas Cowboys",
+              "isCorrect": true
+            },
+            {
+              "answer": "Green Bay Packers",
+              "isCorrect": false
+            },
+            {
+              "answer": "Pittsburgh Steelers",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "In which city do the New Orleans Saints play their home games?",
+          "difficulty": "Easy",
+          "answers": [
+            {
+              "answer": "Miami",
+              "isCorrect": false
+            },
+            {
+              "answer": "New Orleans",
+              "isCorrect": true
+            },
+            {
+              "answer": "Atlanta",
+              "isCorrect": false
+            },
+            {
+              "answer": "Houston",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Which team has won the most Super Bowl titles in NFL history?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "New England Patriots",
+              "isCorrect": true
+            },
+            {
+              "answer": "San Francisco 49ers",
+              "isCorrect": false
+            },
+            {
+              "answer": "Pittsburgh Steelers",
+              "isCorrect": false
+            },
+            {
+              "answer": "Dallas Cowboys",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "What is the home stadium of the Green Bay Packers?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Lambeau Field",
+              "isCorrect": true
+            },
+            {
+              "answer": "Soldier Field",
+              "isCorrect": false
+            },
+            {
+              "answer": "Arrowhead Stadium",
+              "isCorrect": false
+            },
+            {
+              "answer": "Gillette Stadium",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Who holds the record for the most career touchdown passes in NFL history?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "Brett Favre",
+              "isCorrect": false
+            },
+            {
+              "answer": "Tom Brady",
+              "isCorrect": true
+            },
+            {
+              "answer": "Peyton Manning",
+              "isCorrect": false
+            },
+            {
+              "answer": "Drew Brees",
+              "isCorrect": false
             }
           ]
         }

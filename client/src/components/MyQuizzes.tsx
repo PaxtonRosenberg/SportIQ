@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { UserQuiz } from '../lib/api';
 import { AppContext } from './AppContext';
 import { FaEdit } from 'react-icons/fa';
@@ -7,7 +8,9 @@ import { Link } from 'react-router-dom';
 export default function MyQuizzes() {
   const [userQuizzes, setUserQuizzes] = useState<UserQuiz[]>([]);
 
-  const { user } = useContext(AppContext);
+  const { user, handleEdit } = useContext(AppContext);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getUserQuizzes(): Promise<void> {
@@ -25,16 +28,26 @@ export default function MyQuizzes() {
     getUserQuizzes();
   }, []);
 
+  function handleClick(selectedQuiz) {
+    const matchingQuiz = userQuizzes.find(
+      (quiz) => quiz.userQuizId === selectedQuiz.userQuizId
+    );
+    if (matchingQuiz !== undefined) {
+      handleEdit();
+      navigate(`/edit/${matchingQuiz.userQuizId}`);
+    }
+  }
+
   const quizDisplay = userQuizzes.map((quiz, index) => {
     return (
       <div key={index} className="userQuizCard">
         <img className="userQuizImg" src={`${quiz.imgUrl}`}></img>
-        <div className="quizNameBox">
-          <div className="quizName">
+        <div className="quizNameBoxWithIcon">
+          <div className="quizNameWithIcon">
             <div className="quizText">
               <p>{quiz.quizName}</p>
             </div>
-            <div className="editIcon">
+            <div className="editIcon" onClick={() => handleClick(quiz)}>
               <FaEdit />
             </div>
           </div>

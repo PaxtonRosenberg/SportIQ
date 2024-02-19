@@ -39,6 +39,8 @@ app.use(express.json());
 type Answer = {
   answer: string;
   isCorrect: boolean;
+  userAnswerId: number;
+  userQuestionId: number;
 };
 
 type Question = {
@@ -248,14 +250,14 @@ type QuizResult = {
   dailyQuizResultId: number;
   dailyQuizId: string;
   userId: string;
-  score: string;
+  loggedScore: number;
 };
 
 type UserQuizResult = {
   userQuizResultId: number;
   userQuizId: string;
   userId: string;
-  score: string;
+  loggedScore: number;
 };
 
 app.post('/api/dailyQuizResults', authMiddleware, async (req, res, next) => {
@@ -264,8 +266,8 @@ app.post('/api/dailyQuizResults', authMiddleware, async (req, res, next) => {
       throw new ClientError(401, 'not logged in');
     }
 
-    const { dailyQuizId, score } = req.body as Partial<QuizResult>;
-    if (!dailyQuizId || !score) {
+    const { dailyQuizId, loggedScore } = req.body as Partial<QuizResult>;
+    if (!dailyQuizId || !loggedScore) {
       throw new ClientError(400, 'dailyQuizId and score are required fields');
     }
     const sql = `
@@ -273,7 +275,7 @@ app.post('/api/dailyQuizResults', authMiddleware, async (req, res, next) => {
         values ($1, $2, $3)
         returning *;
     `;
-    const params = [dailyQuizId, req.user?.userId, score];
+    const params = [dailyQuizId, req.user?.userId, loggedScore];
     const result = await db.query<QuizResult>(sql, params);
     const [quizResult] = result.rows;
     res.status(201).json(quizResult);
@@ -282,29 +284,39 @@ app.post('/api/dailyQuizResults', authMiddleware, async (req, res, next) => {
   }
 });
 
-app.post('/api/userQuizResults', authMiddleware, async (req, res, next) => {
-  try {
-    if (!req.user) {
-      throw new ClientError(401, 'not logged in');
-    }
+app.post(
+  '/api/auth/userQuizResults',
+  authMiddleware,
+  async (req, res, next) => {
+    try {
+      if (!req.user) {
+        throw new ClientError(401, 'not logged in');
+      }
 
-    const { userQuizId, score } = req.body as Partial<UserQuizResult>;
-    if (!userQuizId || !score) {
-      throw new ClientError(400, 'dailyQuizId and score are required fields');
-    }
-    const sql = `
+      const { userQuizId, userId, loggedScore } =
+        req.body as Partial<UserQuizResult>;
+
+      if (!userQuizId || !userId) {
+        throw new ClientError(
+          400,
+          'userQuizId, userId and score are required fields'
+        );
+      }
+      const sql = `
       insert into "userQuizResults" ("userQuizId", "userId", "score")
         values ($1, $2, $3)
         returning *;
     `;
-    const params = [userQuizId, req.user?.userId, score];
-    const result = await db.query<UserQuizResult>(sql, params);
-    const [quizResult] = result.rows;
-    res.status(201).json(quizResult);
-  } catch (err) {
-    next(err);
+      const params = [userQuizId, req.user?.userId, loggedScore];
+      console.log(params);
+      const result = await db.query<UserQuizResult>(sql, params);
+      const [quizResult] = result.rows;
+      res.status(201).json(quizResult);
+    } catch (err) {
+      next(err);
+    }
   }
-});
+);
 
 app.get('/api/dailyQuizResults', authMiddleware, async (req, res, next) => {
   try {
@@ -342,7 +354,7 @@ app.get('/api/userQuizResults', authMiddleware, async (req, res, next) => {
 
 async function createUserQuizId(
   quizName: string,
-  quizImg: string,
+  imgUrl: string,
   userId: number
 ) {
   const createUserQuizId = `
@@ -350,7 +362,7 @@ async function createUserQuizId(
       values($1, $2, $3)
       returning *
     `;
-  const params = [quizName, quizImg, userId];
+  const params = [quizName, imgUrl, userId];
   const quizData = await db.query(createUserQuizId, params);
   const quiz = quizData.rows[0];
   const userQuizId = quiz.userQuizId;
@@ -385,10 +397,10 @@ async function createUserQuizAnswers(userQuestionId: number, answers: Answer) {
 
 app.post('/api/auth/userQuizzes', authMiddleware, async (req, res, next) => {
   try {
-    const { quizName, quizImg, questions } = req.body;
+    const { quizName, imgUrl, questions } = req.body;
     const userId = req.user?.userId;
     if (userId !== undefined) {
-      const userQuizId = await createUserQuizId(quizName, quizImg, userId);
+      const userQuizId = await createUserQuizId(quizName, imgUrl, userId);
       for (const question of questions) {
         const userQuestionId = await createUserQuizQuestions(
           userQuizId,
@@ -436,6 +448,21 @@ app.get('/api/allUserQuizzes', async (req, res, next) => {
   }
 });
 
+app.get('/api/userQuizzes/:userQuizId', async (req, res, next) => {
+  try {
+    const userQuizId = req.params.userQuizId;
+    const sql = `
+      select *
+        from "userQuizzes"
+        where "userQuizId" = ${userQuizId}
+    `;
+    const result = await db.query(sql);
+    res.json(result.rows);
+  } catch (err) {
+    next(err);
+  }
+});
+
 app.get('/api/userQuizQuestions/:userQuizId', async (req, res, next) => {
   try {
     const userQuizId = req.params.userQuizId;
@@ -460,6 +487,7 @@ app.get('/api/userQuizAnswers/:userQuizId', async (req, res, next) => {
         join "userQuizQuestions" using ("userQuestionId")
         join "userQuizzes" using ("userQuizId")
         where "userQuizId" = ${userQuizId}
+        order by "userAnswerId"
     `;
     const result = await db.query(sql);
     res.json(result.rows);
@@ -467,6 +495,109 @@ app.get('/api/userQuizAnswers/:userQuizId', async (req, res, next) => {
     next(err);
   }
 });
+
+async function updateUserQuizId(
+  quizName: string,
+  imgUrl: string,
+  userQuizId: number,
+  userId: number
+) {
+  const sql = `
+      update "userQuizzes"
+        set "quizName" = $1,
+            "imgUrl" = $2
+        where "userQuizId" = $3 and "userId" = $4
+        returning *;
+    `;
+  const params = [quizName, imgUrl, userId, userQuizId];
+  const quizData = await db.query(sql, params);
+  const quiz = quizData.rows[0];
+  const userQuizIdToUpdate = quiz.userQuizId;
+  return userQuizIdToUpdate;
+}
+
+async function updateUserQuizQuestions(
+  question: string,
+  userQuestionId: number,
+  userQuizId: number
+) {
+  const sql = `
+      update "userQuizQuestions"
+        set "question" = $1
+        where "userQuestionId" = $2 and "userQuizId" = $3
+        returning *;
+    `;
+  const params = [question, userQuestionId, userQuizId];
+  const result = await db.query(sql, params);
+  const newQuestion = result.rows[0];
+  const userQuestionIdToUpdate = newQuestion.userQuestionId;
+  return userQuestionIdToUpdate;
+}
+
+async function updateUserQuizAnswers(answers: Answer, userQuestionId: number) {
+  const sql = `
+      update "userQuizAnswers"
+        set "answer" = $1,
+            "isCorrect" = $2
+      where "userAnswerId" = $3 and "userQuestionId" = $4
+        returning *;
+    `;
+
+  const params = [
+    answers.answer,
+    answers.isCorrect,
+    answers.userAnswerId,
+    userQuestionId,
+  ];
+  const result = await db.query(sql, params);
+  const newAnswer = result.rows[0];
+  return newAnswer;
+}
+
+app.put(
+  '/api/auth/userQuizzes/:userQuizId',
+  authMiddleware,
+  async (req, res, next) => {
+    try {
+      if (!req.user) {
+        throw new ClientError(401, 'not logged in');
+      }
+      const userQuizId = Number(req.params.userQuizId);
+
+      const { quizName, imgUrl, questions } = req.body;
+      const userId = req.user?.userId;
+      if (!userQuizId) {
+        throw new ClientError(
+          400,
+          'userQuizId, quizName, imgUrl, and questions are required fields'
+        );
+      }
+
+      if (userId !== undefined) {
+        const userQuizIdToUpdate = await updateUserQuizId(
+          quizName,
+          imgUrl,
+          userId,
+          userQuizId
+        );
+        for (const question of questions) {
+          await updateUserQuizQuestions(
+            question.question,
+            question.userQuestionId,
+            userQuizIdToUpdate
+          );
+
+          for (const answer of question.answers) {
+            await updateUserQuizAnswers(answer, question.userQuestionId);
+          }
+        }
+      }
+      res.status(201).json('user quiz updated');
+    } catch (err) {
+      next(err);
+    }
+  }
+);
 
 /*
  * Middleware that handles paths that aren't handled by static middleware

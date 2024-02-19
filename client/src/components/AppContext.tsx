@@ -10,7 +10,10 @@ export type AppContextValues = {
   incrementScore: () => void;
   resetScore: () => void;
   isSignedIn: boolean;
+  editing: boolean;
+  handleEdit: () => void;
 };
+
 export const AppContext = createContext<AppContextValues>({
   user: undefined,
   token: undefined,
@@ -20,6 +23,8 @@ export const AppContext = createContext<AppContextValues>({
   incrementScore: () => undefined,
   resetScore: () => undefined,
   isSignedIn: false,
+  editing: false,
+  handleEdit: () => undefined,
 });
 
 export const UserProvider = AppContext.Provider;
