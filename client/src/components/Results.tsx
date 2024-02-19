@@ -1,11 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from './AppContext';
 import { useContext, useEffect, useState } from 'react';
-import { QuizResult } from '../lib/api';
+import { UserQuizResult, DailyQuizResult } from '../lib/api';
 
 export default function Results() {
-  const [dailyQuizResults, setDailyQuizResults] = useState<QuizResult[]>([]);
-  const [userQuizResults, setUserQuizResults] = useState<QuizResult[]>([]);
+  const [dailyQuizResults, setDailyQuizResults] = useState<DailyQuizResult[]>(
+    []
+  );
+  const [userQuizResults, setUserQuizResults] = useState<UserQuizResult[]>([]);
   const { score, isSignedIn } = useContext(AppContext);
   const navigate = useNavigate();
 
