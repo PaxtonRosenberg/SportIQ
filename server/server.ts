@@ -335,6 +335,23 @@ app.get('/api/dailyQuizResults', authMiddleware, async (req, res, next) => {
   }
 });
 
+app.get('/api/userQuizResults', authMiddleware, async (req, res, next) => {
+  try {
+    if (!req.user) {
+      throw new ClientError(401, 'not logged in');
+    }
+    const sql = `
+      select * from "userQuizResults"
+        where "userId" = $1
+        order by "userQuizId";
+    `;
+    const result = await db.query<User>(sql, [req.user?.userId]);
+    res.status(201).json(result.rows);
+  } catch (err) {
+    next(err);
+  }
+});
+
 app.get('/api/allDailyQuizResults', async (req, res, next) => {
   try {
     const sql = `

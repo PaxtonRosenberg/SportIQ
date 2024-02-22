@@ -59,8 +59,8 @@ export default function Community() {
           </div>
           {users.map((user, userIndex) => {
             return user.userId === quiz.userId ? (
-              <div className="quizNameWithByLine">
-                <p key={userIndex}>{`By: ${user.username}`}</p>
+              <div key={userIndex} className="quizNameWithByLine">
+                <p>{`By: ${user.username}`}</p>
               </div>
             ) : null;
           })}
