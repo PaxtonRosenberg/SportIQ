@@ -115,9 +115,6 @@ export default function EditFormInputs() {
       updatedQuestionsAndAnswers[questionIndex].answers[answerIndex].isCorrect =
         newValue;
       setQuestionsAndAnswers(updatedQuestionsAndAnswers);
-      console.log('clicked');
-      console.log(updatedQuestionsAndAnswers);
-      console.log(questionsAndAnswers);
     }
   };
 
@@ -127,6 +124,7 @@ export default function EditFormInputs() {
         <div className="createdQuizInputBox">
           <input
             required
+            autoComplete="off"
             className="createdQuizFormInput"
             type="text"
             name={`Question ${questionNum} Answer ${answerNum}`}
@@ -149,6 +147,7 @@ export default function EditFormInputs() {
               Yes
               <input
                 required
+                autoComplete="off"
                 type="radio"
                 checked={
                   questionsAndAnswers !== null &&
@@ -168,6 +167,7 @@ export default function EditFormInputs() {
               No
               <input
                 required
+                autoComplete="off"
                 type="radio"
                 checked={
                   questionsAndAnswers !== null &&
@@ -191,6 +191,7 @@ export default function EditFormInputs() {
       <div className="createdQuizInputBox" key={questionIndex}>
         <input
           required
+          autoComplete="off"
           className="createdQuizFormInput"
           type="text"
           name={`Question ${questionNum}`}
@@ -212,6 +213,7 @@ export default function EditFormInputs() {
       <div className="createdQuizInputBox">
         <input
           required
+          autoComplete="off"
           className="createdQuizFormInput"
           type="text"
           name="quizName"
@@ -223,6 +225,7 @@ export default function EditFormInputs() {
       <div className="createdQuizInputBox">
         <input
           required
+          autoComplete="off"
           className="createdQuizFormInput"
           type="text"
           name="imgUrl"

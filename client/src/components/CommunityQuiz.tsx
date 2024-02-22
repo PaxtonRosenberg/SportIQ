@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState, useContext } from 'react';
 import { AppContext } from './AppContext';
-import { addUserQuizResult } from '../data';
+import { handleEndOfQuiz } from '../data';
 import Indicators from './Indicators';
 import Questions from './Questions';
 import Answers from './Answers';
@@ -62,6 +62,19 @@ export default function CommunityQuiz() {
     }
   }, [questions]);
 
+  useEffect(() => {
+    // This useEffect watches for changes in the score and calls handleEndOfQuiz
+    async function handleEndOfQuizEffect() {
+      if (currentIndex === 4 && user) {
+        await handleEndOfQuiz(user, questions, score);
+      } else if (!user) {
+        console.log('problem');
+      }
+    }
+
+    handleEndOfQuizEffect();
+  }, [score]);
+
   async function handleClick(answersIndex: number, answers: Answer[]) {
     if (selectedAnswer !== null) {
       return;
@@ -86,23 +99,6 @@ export default function CommunityQuiz() {
         navigate('/stats');
       }
     }, 1000);
-
-    await handleEndOfQuiz(currentIndex);
-  }
-
-  async function handleEndOfQuiz(currentIndex: number) {
-    try {
-      if (currentIndex === 4 && user) {
-        const userId = user.userId;
-        const userQuizId = questions[0].userQuizId;
-        const loggedScore = Number(score !== 0 ? score + 1 : score);
-        const quizResult = { userId, userQuizId, loggedScore };
-
-        await addUserQuizResult(quizResult);
-      }
-    } catch (err) {
-      console.error(err);
-    }
   }
 
   return (

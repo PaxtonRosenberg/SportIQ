@@ -59,6 +59,7 @@ export default function LoginModal() {
                   <div className="loginFormBox">
                     <input
                       required
+                      autoComplete="off"
                       className="loginFormInput"
                       type="password"
                       name="password"

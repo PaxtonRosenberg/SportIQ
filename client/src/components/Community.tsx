@@ -53,7 +53,7 @@ export default function Community() {
         className="userQuizCard"
         onClick={() => handleClick(quiz)}>
         <img className="userQuizImg" src={`${quiz.imgUrl}`}></img>
-        <div className="quizNameBoxWithByLine">
+        <div key={index} className="quizNameBoxWithByLine">
           <div className="quizNameWithByLine">
             <p>{quiz.quizName}</p>
           </div>
