@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState, useContext } from 'react';
 import { AppContext } from './AppContext';
-import { handleEndOfQuiz } from '../data';
+import { handleEndOfUserQuiz } from '../data';
 import Indicators from './Indicators';
 import Questions from './Questions';
 import Answers from './Answers';
@@ -66,9 +66,7 @@ export default function CommunityQuiz() {
     // This useEffect watches for changes in the score and calls handleEndOfQuiz
     async function handleEndOfQuizEffect() {
       if (currentIndex === 4 && user) {
-        await handleEndOfQuiz(user, questions, score);
-      } else if (!user) {
-        console.log('problem');
+        await handleEndOfUserQuiz(user, questions, score);
       }
     }
 

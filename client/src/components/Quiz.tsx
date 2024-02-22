@@ -3,7 +3,7 @@ import Questions from './Questions';
 import Answers from './Answers';
 import { useState, useEffect, useContext } from 'react';
 import { AppContext } from './AppContext';
-import { handleEndOfQuiz } from '../data';
+import { handleEndOfDailyQuiz } from '../data';
 import { useNavigate } from 'react-router-dom';
 import { Question, Answer } from '../lib/api';
 
@@ -66,7 +66,7 @@ export function Quiz() {
     // This useEffect watches for changes in the score and calls handleEndOfQuiz
     async function handleEndOfQuizEffect() {
       if (currentIndex === 4 && user) {
-        await handleEndOfQuiz(user, questions, score);
+        await handleEndOfDailyQuiz(user, questions, score);
       }
     }
 

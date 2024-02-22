@@ -31,7 +31,7 @@ export async function addDailyQuizResult(
   return await res.json();
 }
 
-export async function handleEndOfQuiz(
+export async function handleEndOfDailyQuiz(
   user: User,
   questions: Question[],
   score: number
@@ -67,6 +67,28 @@ export async function addUserQuizResult(
   const res = await fetch('/api/auth/userQuizResults', req);
   if (!res.ok) throw new Error(`fetch Error ${res.status}`);
   return await res.json();
+}
+
+export async function handleEndOfUserQuiz(
+  user: User,
+  questions: Question[],
+  score: number
+) {
+  try {
+    const userId = user.userId;
+    const userQuizId = questions[0].userQuizId;
+    const loggedScore = score;
+
+    if (userId && userQuizId && loggedScore !== undefined) {
+      const quizResult = { userId, userQuizId, loggedScore };
+
+      await addUserQuizResult(quizResult);
+    } else {
+      console.warn('incomplete quiz data. results not sent');
+    }
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 export async function addUserQuiz(

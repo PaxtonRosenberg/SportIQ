@@ -13,9 +13,6 @@ export default function Results() {
 
   useEffect(() => {
     async function getDailyQuizResults(): Promise<void> {
-      if (!isSignedIn) {
-        return;
-      }
       const req = {
         method: 'GET',
         headers: {
@@ -31,9 +28,7 @@ export default function Results() {
       try {
         const results = await res.json();
 
-        if (results && results.length > 0) {
-          setDailyQuizResults(results);
-        }
+        setDailyQuizResults(results);
       } catch (error) {
         console.error('Error parsing JSON:', error);
       }
@@ -44,17 +39,16 @@ export default function Results() {
 
   useEffect(() => {
     async function getUserQuizResults(): Promise<void> {
-      if (!isSignedIn) {
-        return;
-      }
       const req = {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       };
+      console.log(req);
 
       const res = await fetch('/api/userQuizResults', req);
+      console.log(res);
 
       if (!res.ok) {
         const errorText = await res.text();
@@ -63,9 +57,8 @@ export default function Results() {
 
       try {
         const results = await res.json();
-        if (results && results.length > 0) {
-          setUserQuizResults(results);
-        }
+        console.log(results);
+        setUserQuizResults(results);
       } catch (error) {
         console.error('Error parsing JSON:', error);
       }
@@ -83,7 +76,9 @@ export default function Results() {
   for (let i = 0; i < userQuizResults.length; i++) {
     avgScore += userQuizResults[i].score;
   }
-
+  console.log(userQuizResults);
+  console.log(userQuizResults.length);
+  console.log(dailyQuizResults.length);
   const quizzesTaken = dailyQuizResults.length + userQuizResults.length;
 
   avgScore = avgScore / quizzesTaken;
