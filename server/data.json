@@ -1253,6 +1253,1033 @@
           ]
         }
       ]
+    },
+    {
+      "questions": [
+        {
+          "question": "Which MLB team is known as 'The Bronx Bombers'?",
+          "difficulty": "Easy",
+          "answers": [
+            {
+              "answer": "Los Angeles Dodgers",
+              "isCorrect": false
+            },
+            {
+              "answer": "Boston Red Sox",
+              "isCorrect": false
+            },
+            {
+              "answer": "New York Yankees",
+              "isCorrect": true
+            },
+            {
+              "answer": "Chicago Cubs",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "In which city do the Dallas Mavericks play their home games?",
+          "difficulty": "Easy",
+          "answers": [
+            {
+              "answer": "Houston",
+              "isCorrect": false
+            },
+            {
+              "answer": "Dallas",
+              "isCorrect": true
+            },
+            {
+              "answer": "San Antonio",
+              "isCorrect": false
+            },
+            {
+              "answer": "Austin",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Who holds the record for the most triple-doubles in a single NBA season?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "LeBron James",
+              "isCorrect": false
+            },
+            {
+              "answer": "Russell Westbrook",
+              "isCorrect": true
+            },
+            {
+              "answer": "James Harden",
+              "isCorrect": false
+            },
+            {
+              "answer": "Chris Paul",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Which NBA team's mascot is named 'Jack the Gorilla'?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Phoenix Suns",
+              "isCorrect": true
+            },
+            {
+              "answer": "Utah Jazz",
+              "isCorrect": false
+            },
+            {
+              "answer": "Denver Nuggets",
+              "isCorrect": false
+            },
+            {
+              "answer": "Portland Trail Blazers",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Who won the NBA Finals MVP in 2020 while playing for the Los Angeles Lakers?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "LeBron James",
+              "isCorrect": true
+            },
+            {
+              "answer": "Anthony Davis",
+              "isCorrect": false
+            },
+            {
+              "answer": "Kawhi Leonard",
+              "isCorrect": false
+            },
+            {
+              "answer": "Jimmy Butler",
+              "isCorrect": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "question": "Which NBA player is known as 'The Greek Freak'?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "LeBron James",
+              "isCorrect": false
+            },
+            {
+              "answer": "Stephen Curry",
+              "isCorrect": false
+            },
+            {
+              "answer": "Kevin Durant",
+              "isCorrect": false
+            },
+            {
+              "answer": "Giannis Antetokounmpo",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "question": "In rugby, how many points is a try worth?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "3",
+              "isCorrect": false
+            },
+            {
+              "answer": "5",
+              "isCorrect": true
+            },
+            {
+              "answer": "7",
+              "isCorrect": false
+            },
+            {
+              "answer": "2",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Which Premier League soccer club is known as 'The Gunners'?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Manchester United",
+              "isCorrect": false
+            },
+            {
+              "answer": "Chelsea",
+              "isCorrect": false
+            },
+            {
+              "answer": "Arsenal",
+              "isCorrect": true
+            },
+            {
+              "answer": "Liverpool",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Who holds the record for the most career home runs in MLB?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "Hank Aaron",
+              "isCorrect": false
+            },
+            {
+              "answer": "Babe Ruth",
+              "isCorrect": false
+            },
+            {
+              "answer": "Barry Bonds",
+              "isCorrect": true
+            },
+            {
+              "answer": "Ken Griffey Jr.",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Which NFL team is the only one to go undefeated in a full regular season and win the Super Bowl?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "New England Patriots",
+              "isCorrect": false
+            },
+            {
+              "answer": "Green Bay Packers",
+              "isCorrect": false
+            },
+            {
+              "answer": "Pittsburgh Steelers",
+              "isCorrect": false
+            },
+            {
+              "answer": "Miami Dolphins",
+              "isCorrect": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "question": "Who is the all-time leading passer in NFL history?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Tom Brady",
+              "isCorrect": true
+            },
+            {
+              "answer": "Peyton Manning",
+              "isCorrect": false
+            },
+            {
+              "answer": "Drew Brees",
+              "isCorrect": false
+            },
+            {
+              "answer": "Aaron Rodgers",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Which team won the most recent Super Bowl?",
+          "difficulty": "Easy",
+          "answers": [
+            {
+              "answer": "Kansas City Chiefs",
+              "isCorrect": true
+            },
+            {
+              "answer": "Tampa Bay Buccaneers",
+              "isCorrect": false
+            },
+            {
+              "answer": "San Francisco 49ers",
+              "isCorrect": false
+            },
+            {
+              "answer": "New England Patriots",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Who holds the record for the most career rushing yards in NFL history?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "Emmitt Smith",
+              "isCorrect": true
+            },
+            {
+              "answer": "Walter Payton",
+              "isCorrect": false
+            },
+            {
+              "answer": "Barry Sanders",
+              "isCorrect": false
+            },
+            {
+              "answer": "Adrian Peterson",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "In what year did the NFL introduce the two-point conversion?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "1982",
+              "isCorrect": false
+            },
+            {
+              "answer": "1994",
+              "isCorrect": false
+            },
+            {
+              "answer": "2000",
+              "isCorrect": true
+            },
+            {
+              "answer": "2012",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Which team has the most Super Bowl victories?",
+          "difficulty": "Easy",
+          "answers": [
+            {
+              "answer": "Dallas Cowboys",
+              "isCorrect": false
+            },
+            {
+              "answer": "New England Patriots",
+              "isCorrect": true
+            },
+            {
+              "answer": "Pittsburgh Steelers",
+              "isCorrect": false
+            },
+            {
+              "answer": "Green Bay Packers",
+              "isCorrect": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "question": "Who was the last MLB player to achieve the Triple Crown by leading the league in batting average, home runs, and RBIs in a single season?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "Miguel Cabrera",
+              "isCorrect": true
+            },
+            {
+              "answer": "Albert Pujols",
+              "isCorrect": false
+            },
+            {
+              "answer": "Mike Trout",
+              "isCorrect": false
+            },
+            {
+              "answer": "Bryce Harper",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Which pitcher has the most career strikeouts in MLB history?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Randy Johnson",
+              "isCorrect": true
+            },
+            {
+              "answer": "Nolan Ryan",
+              "isCorrect": false
+            },
+            {
+              "answer": "Roger Clemens",
+              "isCorrect": false
+            },
+            {
+              "answer": "Pedro Martinez",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Who holds the record for the highest career batting average in MLB history?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "Ty Cobb",
+              "isCorrect": false
+            },
+            {
+              "answer": "Rogers Hornsby",
+              "isCorrect": false
+            },
+            {
+              "answer": "Shoeless Joe Jackson",
+              "isCorrect": false
+            },
+            {
+              "answer": "Tony Gwynn",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "question": "Which player has the most career stolen bases in MLB history?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Rickey Henderson",
+              "isCorrect": true
+            },
+            {
+              "answer": "Lou Brock",
+              "isCorrect": false
+            },
+            {
+              "answer": "Tim Raines",
+              "isCorrect": false
+            },
+            {
+              "answer": "Vince Coleman",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Who holds the record for the most consecutive games with a hit in MLB history?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "Joe DiMaggio",
+              "isCorrect": true
+            },
+            {
+              "answer": "Ichiro Suzuki",
+              "isCorrect": false
+            },
+            {
+              "answer": "Pete Rose",
+              "isCorrect": false
+            },
+            {
+              "answer": "Paul Molitor",
+              "isCorrect": false
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "questions": [
+        {
+          "question": "Which NBA team, led by Magic Johnson, Kareem Abdul-Jabbar, and James Worthy, earned the nickname 'Showtime' during the 1980s?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Boston Celtics",
+              "isCorrect": false
+            },
+            {
+              "answer": "Los Angeles Lakers",
+              "isCorrect": true
+            },
+            {
+              "answer": "Chicago Bulls",
+              "isCorrect": false
+            },
+            {
+              "answer": "Miami Heat",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Who is the only player in NBA history to record a quadruple-double in a game?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "LeBron James",
+              "isCorrect": false
+            },
+            {
+              "answer": "Hakeem Olajuwon",
+              "isCorrect": false
+            },
+            {
+              "answer": "David Robinson",
+              "isCorrect": false
+            },
+            {
+              "answer": "Nate Thurmond",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "question": "Which NBA team has won the most consecutive championships?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Chicago Bulls",
+              "isCorrect": false
+            },
+            {
+              "answer": "Los Angeles Lakers",
+              "isCorrect": false
+            },
+            {
+              "answer": "Boston Celtics",
+              "isCorrect": true
+            },
+            {
+              "answer": "Golden State Warriors",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Who is known as 'The Answer' in the basketball world?",
+          "difficulty": "Easy",
+          "answers": [
+            {
+              "answer": "Shaquille O'Neal",
+              "isCorrect": false
+            },
+            {
+              "answer": "Allen Iverson",
+              "isCorrect": true
+            },
+            {
+              "answer": "Tim Duncan",
+              "isCorrect": false
+            },
+            {
+              "answer": "Kevin Garnett",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Which NBA player famously wore a wedding dress in a magazine photoshoot?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "Dennis Rodman",
+              "isCorrect": true
+            },
+            {
+              "answer": "Charles Barkley",
+              "isCorrect": false
+            },
+            {
+              "answer": "Scottie Pippen",
+              "isCorrect": false
+            },
+            {
+              "answer": "Kobe Bryant",
+              "isCorrect": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "question": "Which country won the FIFA World Cup in 1998, and who was the tournament's top scorer?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Brazil, Ronaldo",
+              "isCorrect": false
+            },
+            {
+              "answer": "France, Zinedine Zidane",
+              "isCorrect": true
+            },
+            {
+              "answer": "Germany, Miroslav Klose",
+              "isCorrect": false
+            },
+            {
+              "answer": "Italy, Alessandro Del Piero",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Which tennis player completed the Golden Slam by winning all four Grand Slam titles and the Olympic gold medal in the same year?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "Roger Federer",
+              "isCorrect": false
+            },
+            {
+              "answer": "Serena Williams",
+              "isCorrect": false
+            },
+            {
+              "answer": "Novak Djokovic",
+              "isCorrect": false
+            },
+            {
+              "answer": "Steffi Graf",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "question": "In which year did the Summer Olympics return to Athens, Greece, the birthplace of the ancient Olympic Games?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "2000",
+              "isCorrect": false
+            },
+            {
+              "answer": "2004",
+              "isCorrect": true
+            },
+            {
+              "answer": "2008",
+              "isCorrect": false
+            },
+            {
+              "answer": "2012",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Who won the Super Bowl MVP in the 2003 NFL season, when the Tampa Bay Buccaneers emerged victorious?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Tom Brady",
+              "isCorrect": false
+            },
+            {
+              "answer": "Peyton Manning",
+              "isCorrect": false
+            },
+            {
+              "answer": "Dexter Jackson",
+              "isCorrect": true
+            },
+            {
+              "answer": "Randy Moss",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Which boxer famously declared, 'I'm not the greatest, I'm the double greatest. Not only do I knock 'em out, I pick the round,' during his career?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "Mike Tyson",
+              "isCorrect": false
+            },
+            {
+              "answer": "Muhammad Ali",
+              "isCorrect": true
+            },
+            {
+              "answer": "Joe Frazier",
+              "isCorrect": false
+            },
+            {
+              "answer": "George Foreman",
+              "isCorrect": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "question": "Which tennis player won the most Grand Slam singles titles before the year 2020?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "Roger Federer",
+              "isCorrect": true
+            },
+            {
+              "answer": "Rafael Nadal",
+              "isCorrect": false
+            },
+            {
+              "answer": "Novak Djokovic",
+              "isCorrect": false
+            },
+            {
+              "answer": "Andy Murray",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "In which year did the Summer Olympics return to Athens, Greece?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "2000",
+              "isCorrect": false
+            },
+            {
+              "answer": "2004",
+              "isCorrect": true
+            },
+            {
+              "answer": "2008",
+              "isCorrect": false
+            },
+            {
+              "answer": "2012",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Who won the FIFA Women's World Cup in 2015?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Germany",
+              "isCorrect": false
+            },
+            {
+              "answer": "USA",
+              "isCorrect": true
+            },
+            {
+              "answer": "France",
+              "isCorrect": false
+            },
+            {
+              "answer": "Japan",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Which boxer was known as 'The Golden Boy' during his career?",
+          "difficulty": "Easy",
+          "answers": [
+            {
+              "answer": "Mike Tyson",
+              "isCorrect": false
+            },
+            {
+              "answer": "Floyd Mayweather",
+              "isCorrect": false
+            },
+            {
+              "answer": "Oscar De La Hoya",
+              "isCorrect": true
+            },
+            {
+              "answer": "Manny Pacquiao",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "In what year did the Chicago Cubs win their most recent World Series before 2016?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "1908",
+              "isCorrect": true
+            },
+            {
+              "answer": "1924",
+              "isCorrect": false
+            },
+            {
+              "answer": "1945",
+              "isCorrect": false
+            },
+            {
+              "answer": "1969",
+              "isCorrect": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "question": "Which country hosted the Winter Olympics in 2010?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Canada",
+              "isCorrect": true
+            },
+            {
+              "answer": "Russia",
+              "isCorrect": false
+            },
+            {
+              "answer": "Norway",
+              "isCorrect": false
+            },
+            {
+              "answer": "USA",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Who won the Men's Singles title at Wimbledon in 2017?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "Roger Federer",
+              "isCorrect": true
+            },
+            {
+              "answer": "Rafael Nadal",
+              "isCorrect": false
+            },
+            {
+              "answer": "Novak Djokovic",
+              "isCorrect": false
+            },
+            {
+              "answer": "Andy Murray",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Which MLB team won the World Series in 2016?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Chicago Cubs",
+              "isCorrect": true
+            },
+            {
+              "answer": "Cleveland Indians",
+              "isCorrect": false
+            },
+            {
+              "answer": "Los Angeles Dodgers",
+              "isCorrect": false
+            },
+            {
+              "answer": "Boston Red Sox",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Who holds the record for the most goals scored in a single NHL season?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "Wayne Gretzky",
+              "isCorrect": true
+            },
+            {
+              "answer": "Mario Lemieux",
+              "isCorrect": false
+            },
+            {
+              "answer": "Bobby Orr",
+              "isCorrect": false
+            },
+            {
+              "answer": "Jaromir Jagr",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "In what year did Usain Bolt set the world record for the 100 meters in athletics?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "2008",
+              "isCorrect": true
+            },
+            {
+              "answer": "2012",
+              "isCorrect": false
+            },
+            {
+              "answer": "2016",
+              "isCorrect": false
+            },
+            {
+              "answer": "2020",
+              "isCorrect": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "questions": [
+        {
+          "question": "Who won the FIFA World Cup in 1998?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "Germany",
+              "isCorrect": false
+            },
+            {
+              "answer": "Brazil",
+              "isCorrect": false
+            },
+            {
+              "answer": "Italy",
+              "isCorrect": false
+            },
+            {
+              "answer": "France",
+              "isCorrect": true
+            }
+          ]
+        },
+        {
+          "question": "Which athlete is often referred to as 'Lightning Bolt' and holds the world record in both the 100m and 200m sprints?",
+          "difficulty": "Easy",
+          "answers": [
+            {
+              "answer": "Usain Bolt",
+              "isCorrect": true
+            },
+            {
+              "answer": "Tyson Gay",
+              "isCorrect": false
+            },
+            {
+              "answer": "Asafa Powell",
+              "isCorrect": false
+            },
+            {
+              "answer": "Justin Gatlin",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Which country hosted the 2016 Summer Olympics?",
+          "difficulty": "Medium",
+          "answers": [
+            {
+              "answer": "China",
+              "isCorrect": false
+            },
+            {
+              "answer": "Brazil",
+              "isCorrect": true
+            },
+            {
+              "answer": "Russia",
+              "isCorrect": false
+            },
+            {
+              "answer": "Australia",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Who is the all-time leading scorer in the NBA before the year 2020?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "Kareem Abdul-Jabbar",
+              "isCorrect": true
+            },
+            {
+              "answer": "LeBron James",
+              "isCorrect": false
+            },
+            {
+              "answer": "Kobe Bryant",
+              "isCorrect": false
+            },
+            {
+              "answer": "Michael Jordan",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "question": "Which golfer completed the career Grand Slam by winning the 1935 Masters Tournament?",
+          "difficulty": "Hard",
+          "answers": [
+            {
+              "answer": "Arnold Palmer",
+              "isCorrect": false
+            },
+            {
+              "answer": "Bobby Jones",
+              "isCorrect": true
+            },
+            {
+              "answer": "Jack Nicklaus",
+              "isCorrect": false
+            },
+            {
+              "answer": "Gary Player",
+              "isCorrect": false
+            }
+          ]
+        }
+      ]
     }
   ]
 }

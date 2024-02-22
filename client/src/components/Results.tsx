@@ -13,6 +13,9 @@ export default function Results() {
 
   useEffect(() => {
     async function getDailyQuizResults(): Promise<void> {
+      if (!isSignedIn) {
+        return;
+      }
       const req = {
         method: 'GET',
         headers: {
@@ -20,26 +23,54 @@ export default function Results() {
         },
       };
       const res = await fetch('/api/dailyQuizResults', req);
-      const results = await res.json();
-      setDailyQuizResults(results);
-      if (!res.ok) throw new Error(`fetch Error ${res.status}`);
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(`fetch Error ${res.status}: ${errorText}`);
+      }
+
+      try {
+        const results = await res.json();
+
+        if (results && results.length > 0) {
+          setDailyQuizResults(results);
+        }
+      } catch (error) {
+        console.error('Error parsing JSON:', error);
+      }
     }
+
     getDailyQuizResults();
   }, []);
 
   useEffect(() => {
     async function getUserQuizResults(): Promise<void> {
+      if (!isSignedIn) {
+        return;
+      }
       const req = {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       };
+
       const res = await fetch('/api/userQuizResults', req);
-      const results = await res.json();
-      setUserQuizResults(results);
-      if (!res.ok) throw new Error(`fetch Error ${res.status}`);
+
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(`Fetch error ${res.status}: ${errorText}`);
+      }
+
+      try {
+        const results = await res.json();
+        if (results && results.length > 0) {
+          setUserQuizResults(results);
+        }
+      } catch (error) {
+        console.error('Error parsing JSON:', error);
+      }
     }
+
     getUserQuizResults();
   }, []);
 
@@ -68,11 +99,11 @@ export default function Results() {
           </div>
           <div className="resultTextBox">
             <p>{score}/5</p>
-            <p>Current Result</p>
+            <p>Current Score</p>
           </div>
           <div className="resultTextBox">
             <p>{!isSignedIn ? `${score}/5` : `${avgScore}/5`}</p>
-            <p>Average Result</p>
+            <p>Average Score</p>
           </div>
           <div className="resultTextBox">
             <p>{!isSignedIn ? 1 : quizzesTaken}</p>
@@ -81,6 +112,9 @@ export default function Results() {
         </div>
         <p className="textLink" onClick={() => navigate('/')}>
           Take another quiz?
+        </p>
+        <p className="textLink" onClick={() => navigate('/leaderboard')}>
+          Check the Leaderboard
         </p>
         {!isSignedIn ? (
           <p className="optionalResultsText">

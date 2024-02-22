@@ -6,11 +6,12 @@ import {
   UserQuizData,
   EditedUserQuizData,
   UserQuizDataToDelete,
+  User,
 } from './lib/api';
 
 export async function addDailyQuizResult(
   quizResult: LoggedDailyQuizResult
-): Promise<LoggedDailyQuizResult> {
+): Promise<LoggedDailyQuizResult | undefined> {
   const req = {
     method: 'POST',
     headers: {
@@ -19,9 +20,37 @@ export async function addDailyQuizResult(
     },
     body: JSON.stringify(quizResult),
   };
+  if (!quizResult.dailyQuizId) {
+    return;
+  }
+
   const res = await fetch('/api/dailyQuizResults', req);
-  if (!res.ok) throw new Error(`fetch Error ${res.status}`);
+  if (!res.ok) {
+    throw new Error(`fetch Error ${res.status}`);
+  }
   return await res.json();
+}
+
+export async function handleEndOfQuiz(
+  user: User,
+  questions: Question[],
+  score: number
+) {
+  try {
+    const userId = user.userId;
+    const dailyQuizId = questions[0].dailyQuizId;
+    const loggedScore = score;
+
+    if (userId && dailyQuizId && loggedScore !== undefined) {
+      const quizResult = { userId, dailyQuizId, loggedScore };
+
+      await addDailyQuizResult(quizResult);
+    } else {
+      console.warn('incomplete quiz data. results not sent');
+    }
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 export async function addUserQuizResult(

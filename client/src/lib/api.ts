@@ -16,10 +16,23 @@ export type DailyQuizResult = {
   dailyQuizId: number;
 };
 
+export type DailyQuizResultLeaderboard = {
+  score: number;
+  dailyQuizId: number;
+  userId: number;
+};
+
 export type UserQuizResult = {
   score: number;
   userQuizId: number;
   userId: number;
+};
+
+export type UserQuizResultLeaderboard = {
+  score: number;
+  dailyQuizId: number;
+  userId: number;
+  userQuizId: number;
 };
 
 export type LoggedDailyQuizResult = {

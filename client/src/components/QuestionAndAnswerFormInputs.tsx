@@ -8,6 +8,7 @@ export default function QuestionAndAnswerFormInputs() {
         <div className="createdQuizInputBox">
           <input
             required
+            autoComplete="off"
             className="createdQuizFormInput"
             type="text"
             name={`Question ${questionNum} Answer ${answerNum}`}
@@ -22,6 +23,7 @@ export default function QuestionAndAnswerFormInputs() {
               Yes
               <input
                 required
+                autoComplete="off"
                 type="radio"
                 name={`isCorrect Question ${questionNum} Answer ${answerNum}`}
                 id={`isCorrect Question ${questionNum} Answer ${answerNum} Yes`}
@@ -33,6 +35,7 @@ export default function QuestionAndAnswerFormInputs() {
               No
               <input
                 required
+                autoComplete="off"
                 type="radio"
                 name={`isCorrect Question ${questionNum} Answer ${answerNum}`}
                 id={`isCorrect Question ${questionNum} Answer ${answerNum} No`}
@@ -48,6 +51,7 @@ export default function QuestionAndAnswerFormInputs() {
       <div className="createdQuizInputBox" key={questionIndex}>
         <input
           required
+          autoComplete="off"
           className="createdQuizFormInput"
           type="text"
           name={`Question ${questionNum}`}
@@ -63,6 +67,7 @@ export default function QuestionAndAnswerFormInputs() {
       <div className="createdQuizInputBox">
         <input
           required
+          autoComplete="off"
           className="createdQuizFormInput"
           type="text"
           name="quizName"
@@ -72,6 +77,7 @@ export default function QuestionAndAnswerFormInputs() {
       <div className="createdQuizInputBox">
         <input
           required
+          autoComplete="off"
           className="createdQuizFormInput"
           type="text"
           name="imgUrl"

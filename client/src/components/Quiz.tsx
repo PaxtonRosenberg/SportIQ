@@ -3,7 +3,7 @@ import Questions from './Questions';
 import Answers from './Answers';
 import { useState, useEffect, useContext } from 'react';
 import { AppContext } from './AppContext';
-import { addDailyQuizResult } from '../data';
+import { handleEndOfQuiz } from '../data';
 import { useNavigate } from 'react-router-dom';
 import { Question, Answer } from '../lib/api';
 
@@ -16,7 +16,7 @@ export function Quiz() {
   const [currentAnswers, setCurrentAnswers] = useState<Answer[]>([]);
   const [prevAnswersResult, setPrevAnswersResult] = useState<boolean[]>([]);
   const [dailyQuizId, setDailyQuizId] = useState<number>(
-    Math.floor(Math.random() * 11 + 1)
+    Math.floor(Math.random() * 20 + 1)
   );
   const { incrementScore, resetScore, user, score } = useContext(AppContext);
 
@@ -62,20 +62,16 @@ export function Quiz() {
     }
   }, [questions]);
 
-  async function handleEndOfQuiz(currentIndex: number) {
-    try {
+  useEffect(() => {
+    // This useEffect watches for changes in the score and calls handleEndOfQuiz
+    async function handleEndOfQuizEffect() {
       if (currentIndex === 4 && user) {
-        const userId = user.userId;
-        const dailyQuizId = questions[0].dailyQuizId;
-        const loggedScore = Number(score !== 0 ? score + 1 : score);
-        const quizResult = { userId, dailyQuizId, loggedScore };
-
-        await addDailyQuizResult(quizResult);
+        await handleEndOfQuiz(user, questions, score);
       }
-    } catch (err) {
-      console.error(err);
     }
-  }
+
+    handleEndOfQuizEffect();
+  }, [score]);
 
   async function handleClick(answersIndex: number, answers: Answer[]) {
     if (selectedAnswer !== null) {
@@ -101,10 +97,9 @@ export function Quiz() {
         navigate('/stats');
       }
       if (dailyQuizId === null) {
-        setDailyQuizId(Math.floor(Math.random() * 11));
+        setDailyQuizId(Math.floor(Math.random() * 20));
       }
     }, 1000);
-    await handleEndOfQuiz(currentIndex);
   }
 
   return (

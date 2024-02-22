@@ -13,6 +13,7 @@ import CreatedQuizForm from './components/CreatedQuizForm';
 import MyQuizzes from './components/MyQuizzes';
 import CommunityQuiz from './components/CommunityQuiz';
 import EditQuiz from './components/EditQuiz';
+import Leaderboard from './components/Leaderboard';
 import { User, Auth } from './lib/api';
 import './App.css';
 
@@ -113,6 +114,7 @@ export default function App() {
               path="/communityquiz/:userQuizId"
               element={<CommunityQuiz />}></Route>
             <Route path="/edit/:userQuizId" element={<EditQuiz />}></Route>
+            <Route path="/leaderboard" element={<Leaderboard />}></Route>
           </Route>
         </Routes>
       </AppContext.Provider>

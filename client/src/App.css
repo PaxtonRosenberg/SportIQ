@@ -22,6 +22,31 @@ button {
   cursor: pointer;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr.even {
+  background-color: #f9f9f9;
+}
+
+tr.odd {
+  background-color: #fff;
+}
+
 .createdQuizFormInput > label {
   font-family: Montserrat, sans-serif;
   margin-left: 1rem;
@@ -209,7 +234,7 @@ button {
 }
 
 .modal {
-  height: 400px;
+  height: 425px;
   width: 525px;
   border: 1px solid black;
   border-radius: 10%;
@@ -619,6 +644,11 @@ h4 {
   color: white;
 }
 
+.leaderboardBox {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 @media screen and (width <=768px) {
   .indicator {
     border-radius: 50%;
@@ -634,11 +664,11 @@ h4 {
     border-radius: 2rem;
     font-family: Montserrat, sans-serif;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.75rem;
     padding: 0.5rem 2rem;
     margin: 1rem;
-    width: 20rem;
-    height: 2.5rem;
+    width: 25rem;
+    height: 3rem;
     cursor: pointer;
   }
 
@@ -652,11 +682,11 @@ h4 {
     border-radius: 2rem;
     font-family: Montserrat, sans-serif;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.75rem;
     padding: 0.5rem 2rem;
     margin: 1rem;
-    width: 20rem;
-    height: 2.5rem;
+    width: 25rem;
+    height: 3rem;
     cursor: not-allowed;
   }
 
@@ -666,11 +696,11 @@ h4 {
     border-radius: 2rem;
     font-family: Montserrat, sans-serif;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.75rem;
     padding: 0.5rem 2rem;
     margin: 1rem;
-    width: 20rem;
-    height: 2.5rem;
+    width: 25rem;
+    height: 3rem;
     cursor: not-allowed;
   }
 
@@ -680,11 +710,11 @@ h4 {
     border-radius: 2rem;
     font-family: Montserrat, sans-serif;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.75rem;
     padding: 0.5rem 2rem;
     margin: 1rem;
-    width: 20rem;
-    height: 2.5rem;
+    width: 25rem;
+    height: 3rem;
     cursor: not-allowed;
   }
 

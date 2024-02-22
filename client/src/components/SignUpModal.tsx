@@ -42,16 +42,19 @@ export default function SignUpModal() {
                   className="loginFormInput"
                   type="text"
                   name="username"
+                  autoComplete="off"
                   placeholder="username"></input>
                 <input
                   className="loginFormInput"
                   type="text"
                   name="email"
+                  autoComplete="email"
                   placeholder="email"></input>
                 <input
                   className="loginFormInput"
                   type="password"
                   name="password"
+                  autoComplete="off"
                   placeholder="password"></input>
               </div>
               <div className="buttonBox">
