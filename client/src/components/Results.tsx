@@ -45,10 +45,7 @@ export default function Results() {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       };
-      console.log(req);
-
       const res = await fetch('/api/userQuizResults', req);
-      console.log(res);
 
       if (!res.ok) {
         const errorText = await res.text();
@@ -57,7 +54,6 @@ export default function Results() {
 
       try {
         const results = await res.json();
-        console.log(results);
         setUserQuizResults(results);
       } catch (error) {
         console.error('Error parsing JSON:', error);
@@ -76,9 +72,6 @@ export default function Results() {
   for (let i = 0; i < userQuizResults.length; i++) {
     avgScore += userQuizResults[i].score;
   }
-  console.log(userQuizResults);
-  console.log(userQuizResults.length);
-  console.log(dailyQuizResults.length);
   const quizzesTaken = dailyQuizResults.length + userQuizResults.length;
 
   avgScore = avgScore / quizzesTaken;
